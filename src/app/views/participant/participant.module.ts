@@ -7,6 +7,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { CommonModule } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SharedModule } from '../../shared-module';
 
 
 
@@ -18,8 +22,14 @@ import { CommonModule } from '@angular/common';
     ChartsModule,
     BsDropdownModule,
     ButtonsModule.forRoot(),
-    
-    PaginationModule.forRoot(),
+    HttpClientModule,
+    PaginationModule.forRoot(),SharedModule
   ],
-})
+  providers:[TranslateService]
+},
+)
 export class ParticipantModule { }
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

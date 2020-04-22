@@ -7,16 +7,20 @@
   [asideMenuToggler]="'lg'">
   <ul class="nav navbar-nav d-md-down-none">
     <li class="nav-item px-3">
-      <a class="nav-link" href="#">Dashboard</a>
+      <a class="nav-link" href="#">{{'DASHBOARD'|translate}}</a>
     </li>
     <li class="nav-item px-3">
-      <a class="nav-link" href="#">Users</a>
+      <a class="nav-link" href="#">{{'USERS'|translate}}</a>
     </li>
     <li class="nav-item px-3">
-      <a class="nav-link" href="#">Settings</a>
+      <a class="nav-link" href="#">{{'SETTING'|translate}}</a>
     </li>
   </ul>
   <ul class="nav navbar-nav ml-auto">
+
+    <li class="nav-item d-md-down-none">
+      <button type="button" class="btn btn-sm btn-primary" (click)="lngChange()">{{lng|translate}}</button>
+    </li>
     <li class="nav-item d-md-down-none">
       <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
     </li>
@@ -27,19 +31,19 @@
       <a class="nav-link" href="#"><i class="icon-location-pin"></i></a>
     </li>
     <li class="nav-item dropdown" dropdown placement="bottom right">
-      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="data=!data;false">
         <img src="assets/img/logo.png" class="img-avatar" alt="daohamadou@gmail.com"/>
       </a>
-      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
-        <div class="dropdown-header text-center"><strong>Compte</strong></div>
-        <a class="dropdown-item"><i class="fa fa-bell-o"></i> Mise à jour<span class="badge badge-info">42</span></a>
-        <a class="dropdown-item"><i class="fa fa-envelope-o"></i> Messages<span class="badge badge-success">42</span></a>
-        <a class="dropdown-item"><i class="fa fa-tasks"></i> Tâches<span class="badge badge-danger">42</span></a>
-        <a class="dropdown-item"><i class="fa fa-comments"></i> Commentaire<span class="badge badge-warning">42</span></a>
-        <div class="dropdown-header text-center"><strong>Paramètres</strong></div>
-        <a class="dropdown-item"><i class="fa fa-user"></i> Profile</a>
+      <div class="dropdown-menu dropdown-menu-right show" [ngClass]="{'show': data}" aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>{{'ACCOUNT'|translate}}</strong></div>
+        <a class="dropdown-item"><i class="fa fa-bell-o"></i>{{'UPDATE'|translate}}<span class="badge badge-info">42</span></a>
+        <a class="dropdown-item"><i class="fa fa-envelope-o"></i>{{'MESSAGE'|translate}}<span class="badge badge-success">42</span></a>
+        <a class="dropdown-item"><i class="fa fa-tasks"></i>{{'TACHE'|translate}}<span class="badge badge-danger">42</span></a>
+        <a class="dropdown-item"><i class="fa fa-comments"></i>{{ 'COMMENTAIRE' | translate }}<span class="badge badge-warning">42</span></a>
+        <div class="dropdown-header text-center"><strong>{{ 'SETTING' | translate }}</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>{{ 'PROFILE' | translate }}</a>
         <div class="divider"></div>
-        <a class="dropdown-item" href="#/login"><i class="fa fa-lock"></i> Se déconnecter</a>
+        <a class="dropdown-item" (click)="deconnecter()" style="cursor: pointer;"><i class="fa fa-lock"></i>{{ 'DECONNECTER' | translate }}</a>
       </div>
     </li>
   </ul>
@@ -58,8 +62,8 @@
       <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
           <a class="btn" href="#"><i class="icon-speech"></i></a>
-          <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>
-          <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+          <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;{{ 'DASHBOARD' | translate }}</a>
+          <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;{{ 'SETTING' | translate }}</a>
         </div>
       </li>
     </cui-breadcrumb>

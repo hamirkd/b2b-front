@@ -42,6 +42,10 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient} from '@angular/common/http';
+import { SharedModule } from './shared-module';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -55,7 +59,7 @@ import { FormsModule } from '@angular/forms';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule,FormsModule,
+    ChartsModule,FormsModule,SharedModule
   ],
   declarations: [
     AppComponent,
@@ -72,3 +76,6 @@ import { FormsModule } from '@angular/forms';
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

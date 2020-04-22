@@ -3,6 +3,7 @@ import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { PARTICIPANT } from '../participant/_DATA_PARTICIPANT';
 import { Participant } from '../../models/participant';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-participant',
@@ -15,6 +16,8 @@ export class ParticipantComponent  implements OnInit {
   radioModel: string = 'Month';
   debut = 0;
   fin = 10;
+  constructor(private translate: TranslateService){
+  }
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -385,7 +388,7 @@ export class ParticipantComponent  implements OnInit {
   }
 
   ngOnInit(): void {
-    // generate random values for mainChart
+    
     for (let i = 0; i <= this.mainChartElements; i++) {
       this.mainChartData1.push(this.random(50, 200));
       this.mainChartData2.push(this.random(80, 100));

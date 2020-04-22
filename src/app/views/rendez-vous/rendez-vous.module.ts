@@ -7,6 +7,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { SharedModule } from '../../shared-module';
 
 
 
@@ -20,7 +21,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     BsDropdownModule,
     ButtonsModule.forRoot(),
     ModalModule.forRoot(),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),SharedModule
   ]
 })
 export class RendezVousModule { }

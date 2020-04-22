@@ -112,6 +112,12 @@ export class RendezVousComponent implements OnInit {
       p.numeroTable = numeroTable
       p.dateDebut = JSON.parse(JSON.stringify(date));
       p.dateFin = JSON.parse(JSON.stringify(date2));
+      if(date2.getHours()>=16){
+        date.setDate(date2.getDate()+1)
+        date.setHours(8, 0, 0);
+        date2.setDate(date2.getDate()+1)
+        date2.setHours(8, this.data['dureeReunion'], 0);
+      }
       if (numeroTable == this.data['tables']) {
         numeroTable = 0;
         date.setMinutes(date.getMinutes() + this.data['dureeReunion'])

@@ -30,7 +30,7 @@
     <div class="col-sm-4 col-lg-3">
       <div class="card text-white bg-warning">
         <div class="card-body pb-0">
-          <div>Participants</div>
+          <div>{{'PARTICIPANT'|translate}}</div>
           <div class="text-value">{{data?data.participants:0}}</div>
         </div>
       </div>
@@ -42,7 +42,7 @@
           <button type="button" class="btn btn-transparent p-0 float-right" (click)="rendezVous=!rendezVous">
             <i class="icon-settings"></i>
           </button>
-          <div>Rendez-vous</div>
+          <div>{{'RENDEZVOUS'|translate}}</div>
           <div class="text-value">{{data?data.nbRendezVousParParticipant:0}}/{{data?data.nbRendezVous:0}}</div>
         </div>
         <div class="chart-wrapper mt-3" *ngIf="rendezVous">
@@ -69,7 +69,7 @@
           <button type="button" class="btn btn-transparent p-0 float-right" (click)="horaires=!horaires">
             <i class="icon-settings"></i>
           </button>
-          <div>Horaires</div>
+          <div>{{'HORAIRES'|translate}}</div>
           <div class="text-value">{{data?data.horaires+'h':0}}</div>
         </div>
         <div class="chart-wrapper mt-3" *ngIf="horaires">
@@ -90,7 +90,7 @@
   </div>
   <div class="row">
     <div class="align-items-center mx-auto">
-      <button class="btn btn-success" (click)="genererRendezVous()">Génération des rendez-vous &nbsp;<i class="fa fa-recycle"></i></button>
+      <button class="btn btn-success" (click)="genererRendezVous()">{{'GENERATIONDESRENDEZVOUS'|translate}}&nbsp;<i class="fa fa-recycle"></i></button>
     </div>
   </div>
   <div class="row">
@@ -101,12 +101,12 @@
           <table class="table table-striped col-lg-12">
             <thead>
               <tr>
-                <th>index</th>
-                <th>Societé 1</th>
-                <th>Societé 2</th>
-                <th>Numéro Table</th>
-                <th>Début réunion</th>
-                <th>Fin réunion</th>
+                <th>{{'ID'|translate}}</th>
+                <th>{{'SOCIETE'|translate}} 1</th>
+                <th>{{'SOCIETE'|translate}} 2</th>
+                <th>{{'NUMEROTABLE'|translate}}</th>
+                <th>{{'DATEDEBUT'|translate}}</th>
+                <th>{{'DATEFIN'|translate}}</th>
               </tr>
             </thead>
             <tbody>
