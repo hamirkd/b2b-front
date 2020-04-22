@@ -12,15 +12,19 @@ export class RendezVousComponent implements OnInit {
 
   constructor() { }
   data: any = {}
-  pp :Participant[]=[]
+  pp: Participant[] = []
   ppp: RendezVous[] = [];
   rendezVousList: RendezVous[] = [];
+  tables :boolean = false;
+  rendezVous :boolean = false;
+  horaires :boolean = false;
+
 
   ngOnInit(): void {
     /**
      * Selection de tous les participants actifs
      */
-    this.pp=PARTICIPANT.filter(p=>p.status);
+    this.pp = PARTICIPANT.filter(p => p.status);
     this.data['tables'] = 0;
     this.data['participants'] = this.pp.length;
     this.data['nbRendezVous'] = 0;
@@ -46,7 +50,7 @@ export class RendezVousComponent implements OnInit {
           continue;
         if (p1.id == p2.id) continue;
         if (this.verifierPermutation(p1, p2)) continue;
-        this.ppp.push({ p1: p1, p2: p2, numeroTable: 0, dateDebut: '',dateFin:'', })
+        this.ppp.push({ p1: p1, p2: p2, numeroTable: 0, dateDebut: '', dateFin: '', })
       }
     }
     /**
@@ -60,8 +64,8 @@ export class RendezVousComponent implements OnInit {
     }
     /** Le nombre table est calculé s'il n'est pas défini */
     if (this.data['tables'] == 0) {
-    this.data['tables'] = this.data['nbRendezVous'] * this.data['dureeReunion']
-      / (this.data['horaires'] * 60);
+      this.data['tables'] = this.data['nbRendezVous'] * this.data['dureeReunion']
+        / (this.data['horaires'] * 60);
       console.log(this.data['tables'], Math.round(this.data['tables']));
       if (this.data['tables'] > Math.round(this.data['tables'])) {
         this.data['tables'] = Math.round(this.data['tables']) + 1;
@@ -73,16 +77,16 @@ export class RendezVousComponent implements OnInit {
     /**
      * Le nombre de table ne doit pas depasser la moitié du nombre de participant
      */
-    if(this.data['tables']>Math.round(this.ppp.length/2)){
-      this.data['tables'] = Math.round(this.ppp.length/2);
+    if (this.data['tables'] > Math.round(this.ppp.length / 2)) {
+      this.data['tables'] = Math.round(this.ppp.length / 2);
     }
 
     /** Nous allons ordonner les rendez-vous en fonction du nombre de reunion par participant
      * D'abord, nous nous rassurons que tout les participants ont une reunion avant d'ajouter
      * une autre dans la liste des ordres
      */
-    let pppOrdre: { p1, p2, n, numeroTable, dateDebut,dateFin }[] = [];
-    let ppp: { p1, p2, n, numeroTable, dateDebut,dateFin }[] = JSON.parse(JSON.stringify(this.ppp));
+    let pppOrdre: { p1, p2, n, numeroTable, dateDebut, dateFin }[] = [];
+    let ppp: { p1, p2, n, numeroTable, dateDebut, dateFin }[] = JSON.parse(JSON.stringify(this.ppp));
 
     for (let i = 1; i <= this.data['nbRendezVousParParticipant']; i++) {
       for (let k = 0; k < ppp.length; k++) {
@@ -112,10 +116,10 @@ export class RendezVousComponent implements OnInit {
       p.numeroTable = numeroTable
       p.dateDebut = JSON.parse(JSON.stringify(date));
       p.dateFin = JSON.parse(JSON.stringify(date2));
-      if(date2.getHours()>=16){
-        date.setDate(date2.getDate()+1)
+      if (date2.getHours() >= 16) {
+        date.setDate(date2.getDate() + 1)
         date.setHours(8, 0, 0);
-        date2.setDate(date2.getDate()+1)
+        date2.setDate(date2.getDate() + 1)
         date2.setHours(8, this.data['dureeReunion'], 0);
       }
       if (numeroTable == this.data['tables']) {
@@ -139,14 +143,14 @@ export class RendezVousComponent implements OnInit {
     return false;
   }
 
-  verifierNombreRencontreParticipant(p1:Participant) {
+  verifierNombreRencontreParticipant(p1: Participant) {
     let nombre = 0;
     this.ppp.forEach(p => {
       if (p1.id == p.p1.id || p1 == p.p2) nombre++;
     })
     return nombre >= this.data['nbRendezVousParParticipant'];
   }
-  verifierNombreRencontreOrdre(p1:Participant, nbRendezVousParParticipant, ppp) {
+  verifierNombreRencontreOrdre(p1: Participant, nbRendezVousParParticipant, ppp) {
     let nombre = 0;
     ppp.forEach(p => {
       if (p1.id == p.p1.id || p1.id == p.p2.id) nombre++;

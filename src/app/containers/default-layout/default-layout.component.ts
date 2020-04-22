@@ -9,20 +9,21 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class DefaultLayoutComponent implements OnInit {
   /** Les langues {en,fr} */
-  lng:string;
-  constructor(private route: Router,private translate:TranslateService) {
-    this.lng=localStorage.getItem("lng")?localStorage.getItem("lng"):'fr';
+  lng: string;
+  data = false;
+  constructor(private route: Router, private translate: TranslateService) {
+    this.lng = localStorage.getItem("lng") ? localStorage.getItem("lng") : 'fr';
     this.translate.setDefaultLang(this.lng)
     this.translate.reloadLang(this.lng)
-   }
-   ngOnInit(){
-    this.lng=localStorage.getItem("lng")?localStorage.getItem("lng"):'fr';
+  }
+  ngOnInit() {
+    this.lng = localStorage.getItem("lng") ? localStorage.getItem("lng") : 'fr';
     this.translate.setDefaultLang(this.lng)
     this.translate.reloadLang(this.lng)
-    if(!localStorage.getItem("userData")){
+    if (!localStorage.getItem("userData")) {
       this.route.navigate(['/login'])
-      }
-   }
+    }
+  }
   public sidebarMinimized = false;
   public navItems = navItems;
 
@@ -30,9 +31,9 @@ export class DefaultLayoutComponent implements OnInit {
     this.sidebarMinimized = e;
   }
   /** La fonction permet de changer la langue */
-  lngChange(){
-    this.lng = this.lng=='en'?'fr':'en';
-    localStorage.setItem("lng",this.lng)
+  lngChange() {
+    this.lng = this.lng == 'en' ? 'fr' : 'en';
+    localStorage.setItem("lng", this.lng)
     window.location.reload();
   }
 
