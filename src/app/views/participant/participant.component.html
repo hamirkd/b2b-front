@@ -75,8 +75,7 @@
                 </div>
                 <!--/.col-->
                 <div class="col-sm-7 d-none d-md-block">
-                    <button type="button" class="btn btn-primary float-right"><i
-                            class="icon-plus"></i></button>
+                    <button type="button" class="btn btn-primary float-right"><i class="icon-plus"></i></button>
                 </div>
                 <!--/.col-->
             </div>
@@ -100,8 +99,12 @@
                             <td>{{participant.responsable}}</td>
                             <td>{{participant.competence}}</td>
                             <td>
-                                <span *ngIf="participant.status" class="badge badge-success">Actif</span>
-                                <span *ngIf="!participant.status" class="badge badge-danger">Inactif</span>
+
+                                <label class="switch switch-label switch-pill switch-danger">
+                                    <input type="checkbox" class="switch-input" [checked]="!participant.status">
+                                    <span class="switch-slider" data-checked="&#x2715;"
+                                        data-unchecked="&#x2713;"></span>
+                                </label>
                             </td>
                         </tr>
                     </tbody>
@@ -110,9 +113,10 @@
         </div>
         <div class="card-footer">
             <div class="col-xs-12 col-12 d-sm-down-none">
-                
-          <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" [maxSize]="7" (pageChanged)="pageChanged($event)" class="pagination-sm"
-          previousText="&lsaquo;" nextText="&rsaquo;" [boundaryLinks]="true"></pagination>
+
+                <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage"
+                    [maxSize]="7" (pageChanged)="pageChanged($event)" class="pagination-sm" previousText="&lsaquo;"
+                    nextText="&rsaquo;" [boundaryLinks]="true"></pagination>
             </div>
         </div>
     </div>

@@ -63,7 +63,7 @@ export const routes: Routes = [
         loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
       },
       {
-        path: 'dashboard',
+        path: 'dashboard1',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
@@ -85,6 +85,14 @@ export const routes: Routes = [
       {
         path: 'participant',
         loadChildren: () => import('./views/participant/participant.module').then(m => m.ParticipantModule)
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./views/participant/participant.module').then(m => m.ParticipantModule)
+      },
+      {
+        path: 'rendez-vous',
+        loadChildren: () => import('./views/rendez-vous/rendez-vous.module').then(m => m.RendezVousModule)
       }
     ]
   },

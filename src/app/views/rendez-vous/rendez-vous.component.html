@@ -1,0 +1,134 @@
+<div class="animated fadeIn">
+
+  <div class="row">
+
+    <div class="col-sm-4 col-lg-3">
+      <div class="card text-white bg-info">
+        <div class="card-body pb-0">
+          <button type="button" class="btn btn-transparent p-0 float-right" (click)="tables=!tables">
+            <i class="icon-settings"></i>
+          </button>
+          <div>Tables</div>
+          <div class="text-value">{{data?data.tables:0}}</div>
+        </div>
+        <div class="chart-wrapper mt-3" *ngIf="tables">
+          <div class="row">
+            <div class="input-group col-lg-9">
+              <input type="text" id="tables" name="tables" class="form-control" [(ngModel)]="dataTable">
+            </div>
+            <div class="input-group col-lg-3" style="padding: 0;">
+              <button class="btn btn-success btn-sm" (click)="saveData('tables',dataTable);tables=!tables"><i
+                  class="icon-check"></i></button>
+              &nbsp;
+              <button class="btn btn-sm btn-secondary" (click)="tables=!tables"><i class="icon-close"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+    <div class="col-sm-4 col-lg-3">
+      <div class="card text-white bg-warning">
+        <div class="card-body pb-0">
+          <div>Participants</div>
+          <div class="text-value">{{data?data.participants:0}}</div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+    <div class="col-sm-4 col-lg-3">
+      <div class="card text-white bg-danger">
+        <div class="card-body pb-0">
+          <button type="button" class="btn btn-transparent p-0 float-right" (click)="rendezVous=!rendezVous">
+            <i class="icon-settings"></i>
+          </button>
+          <div>Rendez-vous</div>
+          <div class="text-value">{{data?data.nbRendezVousParParticipant:0}}/{{data?data.nbRendezVous:0}}</div>
+        </div>
+        <div class="chart-wrapper mt-3" *ngIf="rendezVous">
+          <div class="row">
+            <div class="input-group col-lg-9">
+              <input type="text" id="rendezVous" name="rendezVous" class="form-control" [(ngModel)]="dataRendezVous">
+            </div>
+
+            <div class="input-group col-lg-3" style="padding: 0;">
+              <button class="btn btn-success btn-sm"
+                (click)="saveData('nbRendezVousParParticipant',dataRendezVous);rendezVous=!rendezVous"><i
+                  class="icon-check"></i></button>
+              &nbsp;
+              <button class="btn btn-sm btn-secondary" (click)="rendezVous=!rendezVous"><i
+                  class="icon-close"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 col-lg-3">
+      <div class="card text-white bg-success">
+        <div class="card-body pb-0">
+          <button type="button" class="btn btn-transparent p-0 float-right" (click)="horaires=!horaires">
+            <i class="icon-settings"></i>
+          </button>
+          <div>Horaires</div>
+          <div class="text-value">{{data?data.horaires+'h':0}}</div>
+        </div>
+        <div class="chart-wrapper mt-3" *ngIf="horaires">
+          <div class="row">
+            <div class="input-group col-lg-9">
+              <input type="text" id="horaires" name="horaires" class="form-control" [(ngModel)]="dataHoraires">
+            </div>
+            <div class="input-group col-lg-3" style="padding: 0;">
+              <button class="btn btn-sm btn-primary" (click)="saveData('horaires',dataHoraires);horaires=!horaires"><i
+                  class="icon-check"></i></button>
+              &nbsp;
+              <button class="btn btn-sm btn-secondary" (click)="horaires=!horaires"><i class="icon-close"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="align-items-center mx-auto">
+      <button class="btn btn-success" (click)="genererRendezVous()">Génération des rendez-vous &nbsp;<i class="fa fa-recycle"></i></button>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="card col-lg-12" style="margin-top:40px;">
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <table class="table table-striped col-lg-12">
+            <thead>
+              <tr>
+                <th>index</th>
+                <th>Societé 1</th>
+                <th>Societé 2</th>
+                <th>Numéro Table</th>
+                <th>Début réunion</th>
+                <th>Fin réunion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of rendezVousList;let i=index">
+                <td>{{i+1+((currentPage-1)*itemsPerPage)}}</td>
+                <td>{{p.p1.societe}}</td>
+                <td>{{p.p2.societe}}</td>
+                <td>{{p.numeroTable}}</td>
+                <td>{{p.dateDebut|date : 'd/M/y  HH:mm:ss'}}</td>
+                <td>{{p.dateFin|date : 'd/M/y  HH:mm:ss'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="col-xs-12 col-12 d-sm-down-none">
+          <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" [maxSize]="7"
+            (pageChanged)="pageChanged($event)" class="pagination-sm" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+            [boundaryLinks]="true"></pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
