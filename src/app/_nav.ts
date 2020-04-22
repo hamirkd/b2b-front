@@ -24,4 +24,9 @@ export const navItems: INavData[] = [
     url: '/rendez-vous',
     icon: 'icon-puzzle'
   },
+  {
+    name: 'Evenement',
+    url: '/evenement',
+    icon: 'icon-layers'
+  },
 ];

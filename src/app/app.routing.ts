@@ -93,6 +93,10 @@ export const routes: Routes = [
       {
         path: 'rendez-vous',
         loadChildren: () => import('./views/rendez-vous/rendez-vous.module').then(m => m.RendezVousModule)
+      },
+      {
+        path: 'evenement',
+        loadChildren: () => import('./views/evenement/evenement.module').then(m => m.EvenementModule)
       }
     ]
   },
