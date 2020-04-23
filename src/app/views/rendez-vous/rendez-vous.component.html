@@ -11,7 +11,7 @@
     </div>
     <div class="col-sm-4">
       <label for="ccyear">&nbsp;</label>
-      <button class="btn btn-success" (click)="selecteEvenement()">{{'VALIDER'|translate}}</button>
+      <button class="btn btn-danger" (click)="selecteEvenement()">{{'VALIDER'|translate}}</button>
     </div>
   </div>
   <div class="row" *ngIf="data.participants">
@@ -103,7 +103,7 @@
   </div>
   <div class="row" *ngIf="data.participants">
     <div class="align-items-center mx-auto">
-      <button class="btn btn-success" (click)="genererRendezVous()">{{'GENERATIONDESRENDEZVOUS'|translate}}&nbsp;<i
+      <button class="btn btn-danger" (click)="genererRendezVous()">{{'GENERATIONDESRENDEZVOUS'|translate}}&nbsp;<i
           class="fa fa-recycle"></i></button>
     </div>
   </div>
@@ -131,6 +131,11 @@
                 <td>{{p.numeroTable}}</td>
                 <td>{{p.dateDebut|date : 'd/M/y  HH:mm:ss'}}</td>
                 <td>{{p.dateFin|date : 'd/M/y  HH:mm:ss'}}</td>
+                <td>
+                  <button class="btn btn-danger">{{'EDIT'|translate}}
+                    &nbsp; <i class="fa fa-edit"></i>
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>

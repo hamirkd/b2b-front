@@ -31,5 +31,7 @@
   "HORAIRES":"Shedules",
   "GENERATIONDESRENDEZVOUS":"Generation of appointment",
   "ADD":"Add",
-  "EVENEMENT":"Evenement"
+  "EVENEMENT":"Evenement",
+  "VALIDER":"Validate",
+  "EDIT":"Edit"
 }
