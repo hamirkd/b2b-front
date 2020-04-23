@@ -47,7 +47,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Morbi Vehicula Pellentesque Associates",
 		"responsable": "Ryder Gonzalez",
 		"competence": "Commerce, Mecanique, Marketing, Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": true
 	},
 	{
@@ -55,7 +55,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Sed Corp.",
 		"responsable": "Kadeem Irwin",
 		"competence": "Mecanique, Commerce, Marketing, Informatique, Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": true
 	},
 	{
@@ -79,7 +79,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Lectus Industries",
 		"responsable": "Herrod Boyer",
 		"competence": "Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": true
 	},
 	{
@@ -87,7 +87,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Ullamcorper Consulting",
 		"responsable": "Kasimir Hendrix",
 		"competence": "Commerce, Informatique, Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": false
 	},
 	{
@@ -119,7 +119,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Dolor Sit LLP",
 		"responsable": "Brenden Blanchard",
 		"competence": "Commerce, Marketing, Mecanique, Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": false
 	},
 	{
@@ -215,7 +215,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Rutrum Urna PC",
 		"responsable": "Lamar Myers",
 		"competence": "Commerce, Mecanique, Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": true
 	},
 	{
@@ -310,7 +310,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Sem Consequat Nec Corp.",
 		"responsable": "Keaton Carr",
 		"competence": "Informatique, Commerce, Marketing, Mecanique, Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": false
 	},
 	{
@@ -318,7 +318,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Quisque Ornare Tortor Industries",
 		"responsable": "Dylan Hays",
 		"competence": "Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": true
 	},
 	{
@@ -342,7 +342,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Lorem LLP",
 		"responsable": "Paul Wallace",
 		"competence": "Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": true
 	},
 	{
@@ -374,7 +374,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Curae; Donec Institute",
 		"responsable": "Lucius Burt",
 		"competence": "Commerce, Informatique, Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": true
 	},
 	{
@@ -520,7 +520,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Mi Institute",
 		"responsable": "Dane Lott",
 		"competence": "Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": false
 	},
 	{
@@ -544,7 +544,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Aptent Corporation",
 		"responsable": "Kyle Daniels",
 		"competence": "Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": false
 	},
 	{
@@ -590,7 +590,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Eu Nibh LLP",
 		"responsable": "Nissim Rosales",
 		"competence": "Informatique, Marketing, Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": true
 	},
 	{
@@ -630,7 +630,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Risus Donec Ltd",
 		"responsable": "Holmes Henderson",
 		"competence": "Mecanique, Commerce, Marketing, Informatique, Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": false
 	},
 	{
@@ -638,7 +638,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Risus In Mi Corporation",
 		"responsable": "Macaulay Emerson",
 		"competence": "Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": true
 	},
 	{
@@ -646,7 +646,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Orci Luctus Et Incorporated",
 		"responsable": "Gary Stark",
 		"competence": "Informatique, Marketing, Mecanique, Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": true
 	},
 	{
@@ -764,7 +764,7 @@ export const PARTICIPANT :Participant[] =
 		"societe": "Integer Associates",
 		"responsable": "Moses Stark",
 		"competence": "Mecanique, Informatique, Commerce, Artisanal",
-		"evenement":"FESTI GRILLE",
+		"evenement":"FESPACO",
 		"status": false
 	}
 ]
