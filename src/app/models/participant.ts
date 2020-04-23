@@ -3,5 +3,6 @@ export class Participant{
     societe:string;
     responsable:string;
     competence:string;
-    status:boolean
+    status:boolean;
+    evenement?:string;
 }

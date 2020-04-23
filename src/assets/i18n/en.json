@@ -29,5 +29,7 @@
   "TABLES":"Tables",
   "RENDEZVOUS":"Appointment",
   "HORAIRES":"Shedules",
-  "GENERATIONDESRENDEZVOUS":"Generation of appointment"
+  "GENERATIONDESRENDEZVOUS":"Generation of appointment",
+  "ADD":"Add",
+  "EVENEMENT":"Evenement"
 }

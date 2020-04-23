@@ -29,6 +29,9 @@
     "TABLES":"Tables",
     "RENDEZVOUS":"Rendez-vous",
     "HORAIRES":"Horaires",
-    "GENERATIONDESRENDEZVOUS":"Génération des rendez-vous"
+    "GENERATIONDESRENDEZVOUS":"Génération des rendez-vous",
+    "ADD":"Ajouter",
+    "EVENEMENT":"Evènement",
+    "VALIDER":"Valider"
 
   }
