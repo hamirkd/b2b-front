@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PARTICIPANT } from '../participant/_DATA_PARTICIPANT';
 import { Participant } from '../../models/participant';
 import { RendezVous } from '../../models/rendez-vous';
+import {EVENEMENT} from '../evenement/_DATA_EVEMENT'
 
 @Component({
   selector: 'app-rendez-vous',
@@ -18,21 +19,29 @@ export class RendezVousComponent implements OnInit {
   tables :boolean = false;
   rendezVous :boolean = false;
   horaires :boolean = false;
+  evenements=EVENEMENT;
+  evenementSelected:any
 
 
   ngOnInit(): void {
     /**
      * Selection de tous les participants actifs
      */
-    this.pp = PARTICIPANT.filter(p => p.status);
+
+  }
+
+  selecteEvenement(){
+    // console.log(this.evenementSelected)
+    this.pp = PARTICIPANT.filter(p => p.status&&p.evenement==this.evenementSelected);
     this.data['tables'] = 0;
     this.data['participants'] = this.pp.length;
     this.data['nbRendezVous'] = 0;
     this.data['nbRendezVousParParticipant'] = 3;
     this.data['horaires'] = 8;// en heure
     this.data['dureeReunion'] = 20;
+    this.rendezVousList =[]
+    this.ppp = []
     this.totalItems = this.ppp.length
-
   }
 
   genererRendezVous() {
@@ -42,6 +51,7 @@ export class RendezVousComponent implements OnInit {
      * participant 1 ### participant 2
      * participant 1 => participant 2 <=> participant 2 => participant 1
      */
+    this.ppp=[];
     for (let p1 of this.pp) {
       for (let p2 of this.pp) {
         if (this.verifierNombreRencontreParticipant(p1))
@@ -63,6 +73,7 @@ export class RendezVousComponent implements OnInit {
       this.data['nbRendezVous'] = this.ppp.length;
     }
     /** Le nombre table est calculé s'il n'est pas défini */
+    console.log(this.data['tables'])
     if (this.data['tables'] == 0) {
       this.data['tables'] = this.data['nbRendezVous'] * this.data['dureeReunion']
         / (this.data['horaires'] * 60);

@@ -1,5 +1,20 @@
 <div class="animated fadeIn">
   <div class="row">
+
+    <div class="input-group mb-3 col-sm-5">
+      <div class="input-group-prepend">
+        <span class="input-group-text">{{'EVENEMENT'|translate}}</span>
+      </div>
+      <select class="form-control" id="ccyear" name="evenement" [(ngModel)]="evenementSelected">
+        <option *ngFor="let evenement of evenements" [value]="evenement.titre">{{evenement.titre}}</option>
+      </select>
+    </div>
+    <div class="col-sm-4">
+      <label for="ccyear">&nbsp;</label>
+      <button class="btn btn-success" (click)="selecteEvenement()">{{'VALIDER'|translate}}</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="data.participants">
     <div class="col-sm-4 col-lg-3">
       <div class="card text-white bg-info">
         <div class="card-body pb-0">
@@ -86,12 +101,13 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="data.participants">
     <div class="align-items-center mx-auto">
-      <button class="btn btn-success" (click)="genererRendezVous()">{{'GENERATIONDESRENDEZVOUS'|translate}}&nbsp;<i class="fa fa-recycle"></i></button>
+      <button class="btn btn-success" (click)="genererRendezVous()">{{'GENERATIONDESRENDEZVOUS'|translate}}&nbsp;<i
+          class="fa fa-recycle"></i></button>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="data.participants">
 
     <div class="card col-lg-12" style="margin-top:40px;">
       <div class="card-body">
@@ -123,8 +139,8 @@
       <div class="card-footer">
         <div class="col-xs-12 col-12 d-sm-down-none">
           <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" [maxSize]="7"
-            (pageChanged)="pageChanged($event)" class="pagination-sm" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-            [boundaryLinks]="true"></pagination>
+            (pageChanged)="pageChanged($event)" class="pagination-sm" previousText="&lsaquo;" nextText="&rsaquo;"
+            firstText="&laquo;" lastText="&raquo;" [boundaryLinks]="true"></pagination>
         </div>
       </div>
     </div>
