@@ -645,9 +645,9 @@ hr {
   padding: 10px 0;
 }
 
-.navbar li.active a.nav-link {
+/* .navbar li.active a.nav-link {
   color: #preset;
-}
+} */
 
 .dropdown-toggle::after {
   display: none;
@@ -1274,7 +1274,7 @@ textarea {
 
 /*cta
 */
-#cta{background: ;}
+/* #cta{background: ;} */
 
 /* Footer Area Start */
 .footer-area {
