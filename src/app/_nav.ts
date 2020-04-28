@@ -29,4 +29,9 @@ export const navItems: INavData[] = [
     url: '/evenement',
     icon: 'icon-layers'
   },
+  {
+    name: 'Site Internet',
+    url: '/site-internet',
+    icon: 'icon-layers'
+  },
 ];

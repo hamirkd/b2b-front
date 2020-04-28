@@ -8,6 +8,8 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { SiteInternetModule } from './site-internet/site-internet.module';
+import { SiteInternetComponent } from './site-internet/site-internet.component';
 
 export const routes: Routes = [
   {
@@ -35,6 +37,11 @@ export const routes: Routes = [
     data: {
       title: 'Login Page'
     }
+  },
+
+  {
+    path: 'site-internet',
+    component: SiteInternetComponent,
   },
   {
     path: 'register',
@@ -104,7 +111,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

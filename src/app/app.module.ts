@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+// import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -45,6 +45,7 @@ import { FormsModule } from '@angular/forms';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient} from '@angular/common/http';
 import { SharedModule } from './shared-module';
+import { SiteInternetModule } from './site-internet/site-internet.module';
 
 @NgModule({
   imports: [
@@ -59,7 +60,7 @@ import { SharedModule } from './shared-module';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule,FormsModule,SharedModule
+    ChartsModule,FormsModule,SharedModule,SiteInternetModule
   ],
   declarations: [
     AppComponent,
@@ -69,10 +70,12 @@ import { SharedModule } from './shared-module';
     LoginComponent,
     RegisterComponent
   ],
-  providers: [{
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }],
+  providers: [
+    // {
+    // provide: LocationStrategy,
+    // useClass: HashLocationStrategy
+  // }
+],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
