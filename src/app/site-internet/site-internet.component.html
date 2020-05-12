@@ -47,8 +47,12 @@
                   Contact
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="!isLogin">
                 <a class="nav-link" href="/login">Login
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="isLogin">
+                <a class="nav-link" href="/dashboard">Mon compte
                 </a>
               </li>
             </ul>

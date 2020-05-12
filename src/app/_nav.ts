@@ -30,11 +30,6 @@ export const navItems: INavData[] = [
     icon: 'icon-layers'
   },
   {
-    name: 'Site Internet',
-    url: '/site-internet',
-    icon: 'icon-layers'
-  },
-  {
     name: 'Base',
     url: '/base',
     icon: 'icon-puzzle',
