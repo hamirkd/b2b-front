@@ -13,11 +13,6 @@ import { SiteInternetComponent } from './site-internet/site-internet.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  },
-  {
     path: '404',
     component: P404Component,
     data: {
@@ -40,7 +35,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'site-internet',
+    path: '',
     component: SiteInternetComponent,
   },
   {

@@ -40,6 +40,6 @@ export class DefaultLayoutComponent implements OnInit {
   deconnecter() {
     console.log("salut")
     localStorage.removeItem("userData");
-    this.route.navigate(['/login'])
+    this.route.navigateByUrl("");
   }
 }

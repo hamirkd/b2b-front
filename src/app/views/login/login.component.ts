@@ -10,7 +10,7 @@ export class LoginComponent {
   password:string="";
   constructor(private route:Router){
     if(localStorage.getItem("userData")){
-      this.route.navigateByUrl("")
+      this.route.navigateByUrl("dashboard")
     }
   }
 
