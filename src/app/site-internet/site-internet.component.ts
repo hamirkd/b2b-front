@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemModel } from '@syncfusion/ej2-angular-splitbuttons';
 
 @Component({
   selector: 'app-site-internet',
@@ -17,22 +16,5 @@ export class SiteInternetComponent implements OnInit {
 
     
   }
-  public items: ItemModel[] = [
-    {
-        text: 'Edit',
-        iconCss: 'ddb-icons e-edit'
-    },
-    {
-        text: 'Delete',
-        iconCss: 'ddb-icons e-delete'
-    },
-    {
-        text: 'Mark As Read',
-        iconCss: 'ddb-icons e-read'
-    },
-    {
-        text: 'Like Message',
-        iconCss: 'ddb-icons e-like'
-    }];
 
 }
