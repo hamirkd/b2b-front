@@ -1,0 +1,81 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="card border-primary">
+                <div class="card-header">
+                    Ajouter un participant
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Etat civil</label>
+                        <div class="form-check form-check-inline mr-1">
+                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio1" value="etatcivil">
+                          <label class="form-check-label" for="inlineRadio1">M.</label>
+                        </div>
+                        <div class="form-check form-check-inline mr-1">
+                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio2" value="etatcivil">
+                          <label class="form-check-label" for="inlineRadio2">Mme</label>
+                        </div>
+                        <div class="form-check form-check-inline mr-1">
+                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio3" value="etatcivil">
+                          <label class="form-check-label" for="inlineRadio3">Mlle</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Nom</label>
+                        <input type="text" name="nom" id="nom" class="form-control col-md-6">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Prénom(s)</label>
+                        <input type="text" name="prenom" id="prenom" class="form-control col-md-6">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Fonction</label>
+                        <input type="text" name="fonction" id="fonction" class="form-control col-md-6">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Email</label>
+                        <input type="email" name="email" id="email" class="form-control col-md-6">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Téléphone</label>
+                        <input type="tel" name="telephone" id="telephone" class="form-control col-md-6">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Téléphone Portable</label>
+                        <input type="tel" name="telephoneportable" id="telephoneportable" class="form-control col-md-6">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Pays</label>
+                        <input type="text" name="pays" id="pays" class="form-control col-md-6">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Societe</label>
+                        <input type="text" name="societe" id="societe" class="form-control col-md-6">
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Compétence</label>
+                        <input type="text" name="competence" id="competence" class="form-control col-md-6">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Activer planning</label>
+                        <input type="checkbox" name="planning" id="planning" class="form-check-input col-md-6">
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <div class="card-header-actions">
+                        <button class="btn btn-primary" [routerLink]="['/participant']">Annuler</button>
+                        <button class="btn btn-danger">Ajouter <i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+
+    </div>
+    <!--/.row-->
+</div>

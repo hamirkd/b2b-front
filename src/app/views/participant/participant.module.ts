@@ -11,11 +11,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from '../../shared-module';
+import { ParticipantEditComponent } from './participant-edit/participant-edit.component';
 
 
 
 @NgModule({
-  declarations: [ParticipantComponent],
+  declarations: [ParticipantComponent, ParticipantEditComponent],
   imports: [CommonModule,
     FormsModule,
     ParticipantRoutingModule,
