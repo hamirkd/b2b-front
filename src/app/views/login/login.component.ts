@@ -27,7 +27,7 @@ export class LoginComponent {
 
     if(this.username=='participant'&&this.password=='participant'){
       user.participant =new Participant();
-      user.participant.id=1;
+      user.participant.id=""+1;
       localStorage.setItem("userData",JSON.stringify(user));
       this.route.navigateByUrl("")
     }

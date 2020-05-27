@@ -58,7 +58,13 @@ export class RendezVousComponent implements OnInit {
           continue;
         if (p1.id == p2.id) continue;
         if (this.verifierPermutation(p1, p2)) continue;
-        this.ppp.push({ p1: p1, p2: p2, numeroTable: 0, dateDebut: '', dateFin: '', })
+        const rdv:RendezVous=new RendezVous();
+        rdv.p1=p1;
+        rdv.p2=p2;
+        rdv.numeroTable='0';
+        rdv.dateDebut='';
+        rdv.dateFin='';
+        this.ppp.push(rdv)
       }
     }
     /**
@@ -94,8 +100,8 @@ export class RendezVousComponent implements OnInit {
      * D'abord, nous nous rassurons que tout les participants ont une reunion avant d'ajouter
      * une autre dans la liste des ordres
      */
-    let pppOrdre: { p1, p2, n, numeroTable, dateDebut, dateFin }[] = [];
-    let ppp: { p1, p2, n, numeroTable, dateDebut, dateFin }[] = JSON.parse(JSON.stringify(this.ppp));
+    let pppOrdre: RendezVous[] = [];
+    let ppp: RendezVous[] = JSON.parse(JSON.stringify(this.ppp));
 
     for (let i = 1; i <= this.data['nbRendezVousParParticipant']; i++) {
       for (let k = 0; k < ppp.length; k++) {
@@ -122,7 +128,7 @@ export class RendezVousComponent implements OnInit {
     date2.setHours(8, this.data['dureeReunion'], 0);
     for (let p of this.ppp) {
       numeroTable++;
-      p.numeroTable = numeroTable
+      p.numeroTable = ""+numeroTable
       p.dateDebut = JSON.parse(JSON.stringify(date));
       p.dateFin = JSON.parse(JSON.stringify(date2));
       if (date2.getHours() >= 16) {
