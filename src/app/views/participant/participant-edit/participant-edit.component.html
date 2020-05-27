@@ -6,70 +6,74 @@
                     Ajouter un participant
                 </div>
                 <div class="card-body">
-
+                    <form #addForm="ngForm">
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Etat civil</label>
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio1" value="etatcivil">
+                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio1" [(ngModel)]="participant.etatCivil" value="M" required>
                           <label class="form-check-label" for="inlineRadio1">M.</label>
                         </div>
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio2" value="etatcivil">
+                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio2" [(ngModel)]="participant.etatCivil" value="Mme" required>
                           <label class="form-check-label" for="inlineRadio2">Mme</label>
                         </div>
                         <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio3" value="etatcivil">
+                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio3" [(ngModel)]="participant.etatCivil" value="Mlle" required>
                           <label class="form-check-label" for="inlineRadio3">Mlle</label>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Nom</label>
-                        <input type="text" name="nom" id="nom" class="form-control col-md-6">
+                        <input type="text" name="nom" id="nom" [(ngModel)]="participant.nom" class="form-control col-md-6" required>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Prénom(s)</label>
-                        <input type="text" name="prenom" id="prenom" class="form-control col-md-6">
+                        <input type="text" name="prenom" id="prenom" [(ngModel)]="participant.prenom" class="form-control col-md-6" required>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Fonction</label>
-                        <input type="text" name="fonction" id="fonction" class="form-control col-md-6">
+                        <input type="text" name="fonction" id="fonction" [(ngModel)]="participant.fonction" class="form-control col-md-6" required>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Email</label>
-                        <input type="email" name="email" id="email" class="form-control col-md-6">
+                        <input type="email" name="email" id="email" [(ngModel)]="participant.email" class="form-control col-md-6" required>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Téléphone</label>
-                        <input type="tel" name="telephone" id="telephone" class="form-control col-md-6">
+                        <input type="tel" name="telephone" id="telephone" [(ngModel)]="participant.telephone" class="form-control col-md-6" required>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Téléphone Portable</label>
-                        <input type="tel" name="telephoneportable" id="telephoneportable" class="form-control col-md-6">
+                        <input type="tel" name="telephoneportable" id="telephoneportable" [(ngModel)]="participant.telephoneportable" class="form-control col-md-6" required>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Pays</label>
-                        <input type="text" name="pays" id="pays" class="form-control col-md-6">
+                        <input type="text" name="pays" id="pays" [(ngModel)]="participant.pays" class="form-control col-md-6" required>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Societe</label>
-                        <input type="text" name="societe" id="societe" class="form-control col-md-6">
+                        <select class="form-control col-md-6" [(ngModel)]="participant.societe" name="societe">
+                            <option *ngFor="let societe of societes" [value]="societe">{{societe.nom}}</option>
+                        </select>
                     </div>
                     
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Compétence</label>
-                        <input type="text" name="competence" id="competence" class="form-control col-md-6">
+                        <select class="form-control col-md-6" multiple [(ngModel)]="participant.competences" name="competences">
+                            <option *ngFor="let competence of competences" [value]="competence">{{competence.nom}}</option>
+                        </select>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Activer planning</label>
-                        <input type="checkbox" name="planning" id="planning" class="form-check-input col-md-6">
+                        <input type="checkbox" name="planning" id="planning" [(ngModel)]="participant.activerPlanning" class="form-check-input col-md-6">
                     </div>
-
+                </form>
                 </div>
                 <div class="card-footer">
                     <div class="card-header-actions">
                         <button class="btn btn-primary" [routerLink]="['/participant']">Annuler</button>
-                        <button class="btn btn-danger">Ajouter <i class="fa fa-plus"></i></button>
+                        <button class="btn btn-danger" (click)="add()">Ajouter <i class="fa fa-plus"></i></button>
                     </div>
                 </div>
             </div>

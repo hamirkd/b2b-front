@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PARTICIPANT } from '../participant/_DATA_PARTICIPANT';
-import { Participant } from '../../models/participant';
+import { Participant } from '../../models/participant.model';
 import { RendezVous } from '../../models/rendez-vous';
 import {EVENEMENT} from '../evenement/_DATA_EVEMENT'
 

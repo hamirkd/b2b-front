@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { navItems } from '../../_nav';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { SessionService } from '../../services/session.service';
+import { navItemsParticipant } from '../../_nav_participant';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +13,16 @@ export class DefaultLayoutComponent implements OnInit {
   /** Les langues {en,fr} */
   lng: string;
   data = false;
-  constructor(private route: Router, private translate: TranslateService) {
+  constructor(private route: Router, private translate: TranslateService, private session: SessionService) {
+
+    this.navItems = navItems;
+    if (!this.session.isLogin()) {
+      this.route.navigate(['/login']);
+    }
+    if (this.session.user.participant) {
+      this.navItems = navItemsParticipant;
+    }
+
     this.lng = localStorage.getItem("lng") ? localStorage.getItem("lng") : 'fr';
     this.translate.setDefaultLang(this.lng)
     this.translate.reloadLang(this.lng)
@@ -20,12 +31,17 @@ export class DefaultLayoutComponent implements OnInit {
     this.lng = localStorage.getItem("lng") ? localStorage.getItem("lng") : 'fr';
     this.translate.setDefaultLang(this.lng)
     this.translate.reloadLang(this.lng)
-    if (!localStorage.getItem("userData")) {
-      this.route.navigate(['/login'])
+    
+    this.navItems = navItems;
+    if (!this.session.isLogin()) {
+      this.route.navigate(['/login']);
+    }
+    if (this.session.user.participant) {
+      this.navItems = navItemsParticipant;
     }
   }
   public sidebarMinimized = false;
-  public navItems = navItems;
+  public navItems = [];// navItems;
 
   toggleMinimize(e) {
     this.sidebarMinimized = e;

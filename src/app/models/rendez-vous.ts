@@ -1,4 +1,4 @@
-import { Participant } from './participant';
+import { Participant } from './participant.model';
 
 export class RendezVous{
     p1:Participant;

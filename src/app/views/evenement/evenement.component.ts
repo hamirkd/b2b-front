@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {EVENEMENT} from './_DATA_EVEMENT'
+import { Router } from '@angular/router';
+import { SessionService } from '../../services/session.service';
+import { Evenement } from '../../models/evenement.model';
+import { EvenementService } from '../../services/evenement.service';
 
 @Component({
   selector: 'app-evenement',
@@ -7,7 +11,32 @@ import {EVENEMENT} from './_DATA_EVEMENT'
   styleUrls: ['./evenement.component.css']
 })
 export class EvenementComponent  implements OnInit {
+  evenements:Evenement[]=[];
+  constructor(public session: SessionService, private route: Router,
+    private evenementService:EvenementService) {
+    if (this.session.isLogin()) {
+      if(!this.session.isAdmin()){
+        this.route.navigateByUrl("evenement");
+      }
+    }
+  }
   ngOnInit(){
+    this.evenementService.findAll().subscribe(data=>{
+      this.evenements=data;
+    },err=>console.log(err));
   }
-  evenements:{titre,dateDebut,domaine}[]=EVENEMENT;
+  
+  add(){
+    this.route.navigate(["evenement/add"]);
   }
+  participer(evenement:Evenement){
+    evenement['participer']=!evenement['participer'];
+  }
+  consulterRdv(evenement){
+    
+  }
+  deleteById(id){
+    this.evenementService.deleteById(id).subscribe(()=>{this.ngOnInit()},err=>console.log(err))
+  }
+
+}

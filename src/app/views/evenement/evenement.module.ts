@@ -8,27 +8,21 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from '../../shared-module';
+import { EvenementEditComponent } from './evenement-edit/evenement-edit.component';
 
 
 
 @NgModule({
-  declarations: [EvenementComponent],
+  declarations: [EvenementComponent, EvenementEditComponent],
   imports: [CommonModule,
     FormsModule,
     EvenementRoutingModule,
     ChartsModule,
     BsDropdownModule,
     ButtonsModule.forRoot(),
-    HttpClientModule,
     PaginationModule.forRoot(),SharedModule
   ]
 },
 )
 export class EvenementModule { }
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}

@@ -1,4 +1,4 @@
-import { Participant } from '../../models/participant';
+import { Participant } from '../../models/participant.model';
 
 export const PARTICIPANT :Participant[] =
 [

@@ -1,0 +1,70 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="card border-primary">
+                <div class="card-header">
+                    Ajouter un évènement
+                </div>
+                <div class="card-body">
+                    <form #addForm="ngForm" onsubmit="add()">
+                        <div class="form-group row">
+                            <label class="col-md-12 col-form-label">Titre</label>
+                            <input type="text" name="titre" id="titre" [(ngModel)]="evenement.titre"
+                                class="form-control col-md-6">
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Description</label>
+                            <textarea class="form-control col-md-12" rows="10" name="description" 
+                            id="description" [(ngModel)]="evenement.description"></textarea>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Domaine d'activé</label>
+                            <select class="form-control col-md-3" multiple [(ngModel)]="evenement.competences" name="competences">
+                                <option *ngFor="let competence of competences" [value]="competence">{{competence.nom}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Date debut</label>
+                            <input type="date" name="dateDebut" id="dateDebut" class="form-control col-md-3"
+                                [(ngModel)]="evenement.dateDebut">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Date fin</label>
+                            <input type="date" name="dateFin" id="dateFin" class="form-control col-md-3"
+                                [(ngModel)]="evenement.dateFin">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Nombre de participant</label>
+                            <div class="form-check form-check-inline mr-1">
+                                <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio1"
+                                    [(ngModel)]="evenement.nombreParticipant" value="ILIMITE" required>
+                                <label class="form-check-label" for="inlineRadio1">Illimité</label>
+                            </div>
+                            <div class="form-check form-check-inline mr-1">
+                                <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio2"
+                                    [(ngModel)]="evenement.nombreParticipant" value="LIMITE" required>
+                                <label class="form-check-label" for="inlineRadio2">Limité</label>
+                            </div>
+                            <div class="form-check form-check-inline" *ngIf="evenement.nombreParticipant=='LIMITE'">
+                                <input class="form-control col-md-4" type="number" name="nombre" id="nombre"
+                                    [(ngModel)]="evenement.nombre" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="card-header-actions">
+                        <button class="btn btn-primary" [routerLink]="['/evenement']">Annuler</button>
+                        <button class="btn btn-danger" (click)="add()" [disabled]="addForm.isValid">Ajouter <i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+
+    </div>
+    <!--/.row-->
+</div>

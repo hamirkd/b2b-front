@@ -2,21 +2,32 @@ import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { PARTICIPANT } from '../participant/_DATA_PARTICIPANT';
-import { Participant } from '../../models/participant';
+import { Participant } from '../../models/participant.model';
 import { TranslateService } from '@ngx-translate/core';
+import { SessionService } from '../../services/session.service';
+import { Router } from '@angular/router';
+import { Competence } from '../../models/competence.models';
+import { CompetenceService } from '../../services/competence.service';
 
 @Component({
   selector: 'app-participant',
   templateUrl: './participant.component.html',
   styleUrls: ['./participant.component.css']
 })
-export class ParticipantComponent  implements OnInit {
+export class ParticipantComponent implements OnInit {
 
-  participants:Participant[];
+  participants: Participant[];
   radioModel: string = 'Month';
   debut = 0;
   fin = 10;
-  constructor(private translate: TranslateService){
+  competences:Competence[]=[];
+  constructor(private translate: TranslateService, private session: SessionService, private route: Router,
+    private competenceService:CompetenceService) {
+    if (this.session.isLogin()) {
+      if(!this.session.isAdmin()){
+        this.route.navigateByUrl("evenement");
+      }
+    }
   }
 
   // lineChart1
@@ -251,7 +262,7 @@ export class ParticipantComponent  implements OnInit {
       mode: 'index',
       position: 'nearest',
       callbacks: {
-        labelColor: function(tooltipItem, chart) {
+        labelColor: function (tooltipItem, chart) {
           return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor };
         }
       }
@@ -264,7 +275,7 @@ export class ParticipantComponent  implements OnInit {
           drawOnChartArea: false,
         },
         ticks: {
-          callback: function(value: any) {
+          callback: function (value: any) {
             return value.charAt(0);
           }
         }
@@ -388,20 +399,20 @@ export class ParticipantComponent  implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     for (let i = 0; i <= this.mainChartElements; i++) {
       this.mainChartData1.push(this.random(50, 200));
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
-    let page = this.currentPage*this.itemsPerPage;
+    let page = this.currentPage * this.itemsPerPage;
     this.totalItems = PARTICIPANT.length
-    this.participants = PARTICIPANT.slice(page,page+this.itemsPerPage);
-    this.actif = PARTICIPANT.filter(P=>P.status).length;
+    this.participants = PARTICIPANT.slice(page, page + this.itemsPerPage);
+    this.actif = PARTICIPANT.filter(P => P.status).length;
     this.inscrit = PARTICIPANT.length;
   }
   totalItems: number = 64;
-  currentPage: number   = 0;
+  currentPage: number = 0;
   smallnumPages: number = 0;
 
   maxSize: number = 7;
@@ -410,7 +421,7 @@ export class ParticipantComponent  implements OnInit {
   numPages: number = 0;
   itemsPerPage = 10
 
-  currentPager: number   = 4;
+  currentPager: number = 4;
 
   setPage(pageNo: number): void {
     this.currentPage = pageNo;
@@ -419,11 +430,11 @@ export class ParticipantComponent  implements OnInit {
   pageChanged(event: any): void {
     console.log('Page changed to: ' + event.page);
     console.log('Number items per page: ' + event.itemsPerPage);
-    let page = (event.page-1)*this.itemsPerPage;
-    this.participants = PARTICIPANT.slice(page,page+this.itemsPerPage);
+    let page = (event.page - 1) * this.itemsPerPage;
+    this.participants = PARTICIPANT.slice(page, page + this.itemsPerPage);
   }
-  inscrit:number=0;
-  enLigne:number=0;
-  actif:number = 0;
-  inactif:number = 0;
-  }
+  inscrit: number = 0;
+  enLigne: number = 0;
+  actif: number = 0;
+  inactif: number = 0;
+}

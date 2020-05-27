@@ -3,28 +3,39 @@
     <div class="row">
         <div style="padding-bottom: 5px;" class="col-md-2">
             
-                  <button class="btn btn-danger">{{'ADD'|translate}}&nbsp;<i class="fa fa-plus"></i></button>
+                  <button class="btn btn-danger" (click)="add()" *ngIf="session.isAdmin()">{{'ADD'|translate}}&nbsp;<i class="fa fa-plus"></i></button>
               
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-6 col-md-4" *ngFor="let evenement of evenements">
-            <div class="card border-primary">
+            <div class="card border-primary" [ngClass]="{'card-accent-warning':evenement.participer}">
                 <div class="card-header">
                     {{evenement.titre}}
+                    <div class="card-header-actions" style="height: 21px;" >
+                      <label class="switch switch-sm switch-label switch-info">
+                          <button class="btn btn-sm" (click)="deleteById(evenement.id)"><i class="cui-delete icons"></i></button>
+                      </label>
+                    </div>
                 </div>
                 <div class="card-body">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-                    laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                    ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                    {{evenement.description}}
                 </div>
                 <div class="card-footer">
-                    {{evenement.domaine}}
-
-                    <div class="card-header-actions">
-                        <span class="badge badge-info">{{evenement.dateDebut}}</span>
+                    <span class="badge badge-primary" *ngFor="let c of evenement.competences">{{c.nom}}</span>
+                    <div>
+                        <span class="badge badge-sm badge-danger" *ngIf="evenement.nombreParticipant!='ILIMITE'">{{'NOMBRE-DE-PLACE'}} : {{evenement.nombre}}</span>
                     </div>
+                    <div>
+                        <span class="badge badge-sm badge-info">{{evenement.dateDebut}}</span>
+                        <span class="badge badge-sm badge-info">{{evenement.dateFin}}</span>
+                    </div>
+                </div>
+                <div class="card-footer" *ngIf="!session.isAdmin()">
+                    <button class="btn btn-primary btn-sm" (click)="participer(evenement)" *ngIf="!evenement.participer">{{'PARTICIPER'|translate}}</button>
+                    <button class="btn btn-default btn-sm" (click)="participer(evenement)" *ngIf="evenement.participer">{{'DESABONNER'|translate}}</button>
+                    <button class="btn btn-primary btn-sm" (click)="consulterRdv(evenement)" *ngIf="evenement.participer">{{'CONSULTERRDV'|translate}}</button>
                 </div>
             </div>
         </div>

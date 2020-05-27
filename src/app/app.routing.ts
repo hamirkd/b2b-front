@@ -97,6 +97,14 @@ export const routes: Routes = [
         loadChildren: () => import('./views/rendez-vous/rendez-vous.module').then(m => m.RendezVousModule)
       },
       {
+        path: 'mes-rendez-vous',
+        loadChildren: () => import('./views/mes-rendez-vous/mes-rendez-vous.module').then(m => m.MesRendezVousModule)
+      },
+      {
+        path: 'mon-compte',
+        loadChildren: () => import('./views/mon-compte/mon-compte.module').then(m => m.MonCompteModule)
+      },
+      {
         path: 'evenement',
         loadChildren: () => import('./views/evenement/evenement.module').then(m => m.EvenementModule)
       }

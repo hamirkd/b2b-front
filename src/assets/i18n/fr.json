@@ -33,6 +33,9 @@
     "ADD":"Ajouter",
     "EVENEMENT":"Evènement",
     "VALIDER":"Valider",
-    "EDIT":"Modifier"
+    "EDIT":"Modifier",
+    "PARTICIPER":"Participer",
+    "DESABONNER":"Se désabonner",
+    "CONSULTERRDV":"Consulter Rendez vous"
 
   }
