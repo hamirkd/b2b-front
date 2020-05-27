@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
-import { PARTICIPANT } from '../participant/_DATA_PARTICIPANT';
 import { Participant } from '../../models/participant.model';
 import { TranslateService } from '@ngx-translate/core';
 import { SessionService } from '../../services/session.service';
@@ -406,10 +405,10 @@ export class ParticipantComponent implements OnInit {
       this.mainChartData3.push(65);
     }
     let page = this.currentPage * this.itemsPerPage;
-    this.totalItems = PARTICIPANT.length
-    this.participants = PARTICIPANT.slice(page, page + this.itemsPerPage);
-    this.actif = PARTICIPANT.filter(P => P.status).length;
-    this.inscrit = PARTICIPANT.length;
+    this.totalItems = 0//PARTICIPANT.length
+    this.participants = []//PARTICIPANT.slice(page, page + this.itemsPerPage);
+    this.actif = 0//PARTICIPANT.filter(P => P.status).length;
+    this.inscrit = 0//PARTICIPANT.length;
   }
   totalItems: number = 64;
   currentPage: number = 0;
@@ -431,7 +430,7 @@ export class ParticipantComponent implements OnInit {
     console.log('Page changed to: ' + event.page);
     console.log('Number items per page: ' + event.itemsPerPage);
     let page = (event.page - 1) * this.itemsPerPage;
-    this.participants = PARTICIPANT.slice(page, page + this.itemsPerPage);
+    this.participants = [];//PARTICIPANT.slice(page, page + this.itemsPerPage);
   }
   inscrit: number = 0;
   enLigne: number = 0;

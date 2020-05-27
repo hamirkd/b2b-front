@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PARTICIPANT } from '../participant/_DATA_PARTICIPANT';
 import { Participant } from '../../models/participant.model';
 import { RendezVous } from '../../models/rendez-vous';
-import {EVENEMENT} from '../evenement/_DATA_EVEMENT'
 
 @Component({
   selector: 'app-rendez-vous',
@@ -19,7 +17,7 @@ export class RendezVousComponent implements OnInit {
   tables :boolean = false;
   rendezVous :boolean = false;
   horaires :boolean = false;
-  evenements=EVENEMENT;
+  evenements=[];
   evenementSelected:any
 
 
@@ -32,7 +30,7 @@ export class RendezVousComponent implements OnInit {
 
   selecteEvenement(){
     // console.log(this.evenementSelected)
-    this.pp = PARTICIPANT.filter(p => p.status&&p.evenement==this.evenementSelected);
+    this.pp = [];//PARTICIPANT.filter(p => p.status&&p.evenement==this.evenementSelected);
     this.data['tables'] = 0;
     this.data['participants'] = this.pp.length;
     this.data['nbRendezVous'] = 0;
