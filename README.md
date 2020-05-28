@@ -1,6 +1,13 @@
-<<<<<<< HEAD
-=======
-## Plateforme business to business
+# Présentation Générale
 
+Application de la chambre de commerce
 
->>>>>>> c804b14a42f74af8eb8c5b1a6d370bd475e800ec
+Cette application (Serveur front) permet à l'administrateur et aux participants
+de se connecter et de gérer leurs espace
+
+# Configuration
+
+Dans environment.ts, vous devez indiquer le lien du serveur backend pour que le 
+front puisse communiquer avec les données
+
+Le site web communiquera avec le backend et le front end
