@@ -6,7 +6,7 @@ import { Participant } from '../../../models/participant.model';
 import { ParticipantService } from '../../../services/participant.service';
 import { SocieteService } from '../../../services/societe.service';
 import { Societe } from '../../../models/societe.model';
-import { Pays } from '../../../models/Pays.model';
+import { Pays } from '../../../models/pays.model';
 import { PaysService } from '../../../services/pays.service';
 import { ToastrService } from 'ngx-toastr';
 

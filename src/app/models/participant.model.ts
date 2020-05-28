@@ -1,6 +1,6 @@
 import { Utilisateur } from './Utilisateur.model';
 import { Societe } from './societe.model';
-import { Pays } from './Pays.model';
+import { Pays } from './pays.model';
 import { Competence } from './competence.models';
 import { Notification } from './Notification.model';
 import { RendezVous } from './rendez-vous';
