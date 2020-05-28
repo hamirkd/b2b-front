@@ -95,9 +95,12 @@
                     <tbody>
                         <tr *ngFor="let participant of participants">
                             <td>{{participant.id}}</td>
-                            <td>{{participant.societe}}</td>
-                            <td>{{participant.responsable}}</td>
-                            <td>{{participant.competence}}</td>
+                            <td>{{participant.societe?.nom}}</td>
+                            <td>{{participant.participant.nom}}</td>
+                            <td>{{participant.competences}}
+                                <span *ngFor="let c of participant.competences">
+                                    {{c.nom}}</span>
+                            </td>
                             <td>
 
                                 <label class="switch switch-label switch-pill switch-danger">

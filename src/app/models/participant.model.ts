@@ -10,7 +10,6 @@ export class Participant extends Utilisateur{
     etatCivil:'M'|'Mme'|'Mlle'='M';
     societe:Societe;
     responsable:string;
-    competence:string;
     status:boolean;
     evenement?:string;
     prenom:string;;
@@ -23,4 +22,5 @@ export class Participant extends Utilisateur{
     competences:Competence[];
     notifications:Notification;
     rendezVous:RendezVous[];
+    status:boolean;
 }

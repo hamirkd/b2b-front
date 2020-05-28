@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
 import { Evenement } from '../../models/evenement.model';
 import { EvenementService } from '../../services/evenement.service';
+import { PaysService } from '../../services/pays.service';
 
 @Component({
   selector: 'app-evenement',
@@ -12,7 +13,7 @@ import { EvenementService } from '../../services/evenement.service';
 export class EvenementComponent  implements OnInit {
   evenements:Evenement[]=[];
   constructor(public session: SessionService, private route: Router,
-    private evenementService:EvenementService) {
+    private evenementService:EvenementService,private e:PaysService) {
     if (this.session.isLogin()) {
       if(!this.session.isAdmin()){
         this.route.navigateByUrl("evenement");

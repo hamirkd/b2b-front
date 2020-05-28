@@ -49,7 +49,9 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Pays</label>
-                        <input type="text" name="pays" id="pays" [(ngModel)]="participant.pays" class="form-control col-md-6" required>
+                        <select class="form-control col-md-6" [(ngModel)]="participant.pays" name="pays" required>
+                            <option *ngFor="let pay of pays;let i=index" [value]="i">{{pay.nom}}</option>
+                        </select>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Societe</label>
@@ -60,8 +62,8 @@
                     
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Compétence</label>
-                        <select class="form-control col-md-6" multiple [(ngModel)]="participant.competences" name="competences">
-                            <option *ngFor="let competence of competences" [value]="competence">{{competence.nom}}</option>
+                        <select class="form-control col-md-6" multiple [(ngModel)]="participant.competences" name="competences" required>
+                            <option *ngFor="let competence of competences" [value]="competence.id">{{competence.nom}}</option>
                         </select>
                     </div>
                     <div class="form-group row">
@@ -73,7 +75,7 @@
                 <div class="card-footer">
                     <div class="card-header-actions">
                         <button class="btn btn-primary" [routerLink]="['/participant']">Annuler</button>
-                        <button class="btn btn-danger" (click)="add()">Ajouter <i class="fa fa-plus"></i></button>
+                        <button class="btn btn-danger" (click)="add()" [disabled]="!addForm.valid">Ajouter <i class="fa fa-plus"></i></button>
                     </div>
                 </div>
             </div>

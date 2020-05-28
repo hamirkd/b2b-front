@@ -7,6 +7,8 @@ import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 import { Competence } from '../../models/competence.models';
 import { CompetenceService } from '../../services/competence.service';
+import { ParticipantService } from '../../services/participant.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-participant',
@@ -19,14 +21,22 @@ export class ParticipantComponent implements OnInit {
   radioModel: string = 'Month';
   debut = 0;
   fin = 10;
+  public PARTICIPANT:Participant[];
   competences:Competence[]=[];
   constructor(private translate: TranslateService, private session: SessionService, private route: Router,
-    private competenceService:CompetenceService) {
+    private competenceService:CompetenceService,private participantService:ParticipantService,
+    private toastr:ToastrService) {
     if (this.session.isLogin()) {
       if(!this.session.isAdmin()){
         this.route.navigateByUrl("evenement");
       }
     }
+    this.participantService.findAll().subscribe(data=>{
+      this.PARTICIPANT=data;
+    },err=>{
+      console.log(err);
+      this.toastr.error("Impossible d'afficher la liste des participants");
+    })
   }
 
   // lineChart1
@@ -405,10 +415,10 @@ export class ParticipantComponent implements OnInit {
       this.mainChartData3.push(65);
     }
     let page = this.currentPage * this.itemsPerPage;
-    this.totalItems = 0//PARTICIPANT.length
-    this.participants = []//PARTICIPANT.slice(page, page + this.itemsPerPage);
-    this.actif = 0//PARTICIPANT.filter(P => P.status).length;
-    this.inscrit = 0//PARTICIPANT.length;
+    this.totalItems = this.PARTICIPANT.length//PARTICIPANT.length
+    this.participants = this.PARTICIPANT.slice(page, page + this.itemsPerPage);
+    this.actif = this.PARTICIPANT.filter(P => P.status).length;
+    this.inscrit = this.PARTICIPANT.length;
   }
   totalItems: number = 64;
   currentPage: number = 0;
@@ -430,7 +440,7 @@ export class ParticipantComponent implements OnInit {
     console.log('Page changed to: ' + event.page);
     console.log('Number items per page: ' + event.itemsPerPage);
     let page = (event.page - 1) * this.itemsPerPage;
-    this.participants = [];//PARTICIPANT.slice(page, page + this.itemsPerPage);
+    this.participants = this.PARTICIPANT.slice(page, page + this.itemsPerPage);
   }
   inscrit: number = 0;
   enLigne: number = 0;

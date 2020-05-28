@@ -46,6 +46,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient} from '@angular/common/http';
 import { SharedModule } from './shared-module';
 import { SiteInternetModule } from './site-internet/site-internet.module';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -53,7 +54,7 @@ import { SiteInternetModule } from './site-internet/site-internet.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     AppAsideModule,
-    AppBreadcrumbModule.forRoot(),
+    AppBreadcrumbModule.forRoot(),ToastrModule.forRoot(),
     AppFooterModule,
     AppHeaderModule,
     AppSidebarModule,
