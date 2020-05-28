@@ -1,8 +1,8 @@
-import { Utilisateur } from './butilisateur.model';
+import { Utilisateur } from './utilisateur.model';
 import { Societe } from './societe.model';
-import { Pays } from './bpays.model';
+import { Pays } from './pays.model';
 import { Competence } from './competence.models';
-import { Notification } from './bnotification.model';
+import { Notification } from './notification.model';
 import { RendezVous } from './rendez-vous';
 
 export class Participant extends Utilisateur{
