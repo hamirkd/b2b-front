@@ -6,7 +6,7 @@ import { Participant } from '../../../models/participant.model';
 import { ParticipantService } from '../../../services/participant.service';
 import { SocieteService } from '../../../services/societe.service';
 import { Societe } from '../../../models/societe.model';
-import { Pays } from '../../../models/pays.model';
+import { Pays } from '../../../models/bpays.model';
 import { PaysService } from '../../../services/pays.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -37,7 +37,6 @@ export class ParticipantEditComponent implements OnInit {
     this.paysService.findAll().subscribe(d=>{
       this.pays=d;
     })
-
   }
   add() {
     
