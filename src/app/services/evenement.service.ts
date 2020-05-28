@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {environment} from '../../environments/environment'
 import { Observable } from 'rxjs';
 import { Evenement } from '../models/evenement.model';
+import { Participant } from '../models/participant.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -30,8 +31,14 @@ export class EvenementService {
    }
    
    update(evenement:Evenement):Observable<Evenement>{
-    return this.httpClient.put(this.baseUrl,{evenement:evenement}) as Observable<Evenement>;
+     console.log(evenement)
+    return this.httpClient.put(this.baseUrl,evenement) as Observable<Evenement>;
   }
+   
+  addOrDelete(evenementDto):Observable<Evenement>{
+    console.log(evenementDto)
+   return this.httpClient.post(this.baseUrl+"addp",evenementDto) as Observable<Evenement>;
+ }
   delete(evenement:Evenement):Observable<boolean>{
     return this.httpClient.delete(this.baseUrl+evenement.id) as Observable<boolean>;
   }

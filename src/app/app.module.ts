@@ -54,7 +54,10 @@ import {ToastrModule} from 'ngx-toastr';
     BrowserAnimationsModule,
     AppRoutingModule,
     AppAsideModule,
-    AppBreadcrumbModule.forRoot(),ToastrModule.forRoot(),
+    AppBreadcrumbModule.forRoot(),ToastrModule.forRoot({  
+      positionClass:'top-right',  
+      closeButton: true,
+    }),
     AppFooterModule,
     AppHeaderModule,
     AppSidebarModule,

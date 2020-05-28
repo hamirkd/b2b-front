@@ -93,21 +93,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let participant of participants">
+                        <tr *ngFor="let participant of participants;let i=index">
                             <td>{{participant.id}}</td>
                             <td>{{participant.societe?.nom}}</td>
-                            <td>{{participant.participant.nom}}</td>
-                            <td>{{participant.competences}}
+                            <td>{{participant.nom}} {{participant.prenom}}</td>
+                            <td>
                                 <span *ngFor="let c of participant.competences">
                                     {{c.nom}}</span>
                             </td>
                             <td>
 
-                                <label class="switch switch-label switch-pill switch-danger">
-                                    <input type="checkbox" class="switch-input" [checked]="!participant.status">
+                                <label class="switch switch-label switch-pill switch-success">
+                                    <input type="checkbox" class="switch-input" [checked]="participant.status" (click)="changeStatut(participant)">
                                     <span class="switch-slider" data-checked="&#x2715;"
                                         data-unchecked="&#x2713;"></span>
                                 </label>
+
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" (click)="delete(participant,i)"><i class="fa fa-remove"></i></button>
                             </td>
                         </tr>
                     </tbody>

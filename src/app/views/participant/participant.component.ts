@@ -21,22 +21,16 @@ export class ParticipantComponent implements OnInit {
   radioModel: string = 'Month';
   debut = 0;
   fin = 10;
-  public PARTICIPANT:Participant[];
-  competences:Competence[]=[];
+  public PARTICIPANT: Participant[] = [];
+  competences: Competence[] = [];
   constructor(private translate: TranslateService, private session: SessionService, private route: Router,
-    private competenceService:CompetenceService,private participantService:ParticipantService,
-    private toastr:ToastrService) {
+    private competenceService: CompetenceService, private participantService: ParticipantService,
+    private toastr: ToastrService) {
     if (this.session.isLogin()) {
-      if(!this.session.isAdmin()){
+      if (!this.session.isAdmin()) {
         this.route.navigateByUrl("evenement");
       }
     }
-    this.participantService.findAll().subscribe(data=>{
-      this.PARTICIPANT=data;
-    },err=>{
-      console.log(err);
-      this.toastr.error("Impossible d'afficher la liste des participants");
-    })
   }
 
   // lineChart1
@@ -414,11 +408,20 @@ export class ParticipantComponent implements OnInit {
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
-    let page = this.currentPage * this.itemsPerPage;
-    this.totalItems = this.PARTICIPANT.length//PARTICIPANT.length
-    this.participants = this.PARTICIPANT.slice(page, page + this.itemsPerPage);
-    this.actif = this.PARTICIPANT.filter(P => P.status).length;
-    this.inscrit = this.PARTICIPANT.length;
+    this.itemsPerPage = 10
+
+    this.participantService.findAll().subscribe(data => {
+      this.PARTICIPANT = data;
+      let page = this.currentPage * this.itemsPerPage;
+      this.totalItems = this.PARTICIPANT.length//PARTICIPANT.length
+      this.participants = this.PARTICIPANT.slice(page, page + this.itemsPerPage);
+      this.actif = this.PARTICIPANT.filter(P => P.status).length;
+      this.inscrit = this.PARTICIPANT.length;
+      console.log(data);
+    }, err => {
+      console.log(err);
+      this.toastr.error("Impossible d'afficher la liste des participants");
+    })
   }
   totalItems: number = 64;
   currentPage: number = 0;
@@ -437,10 +440,37 @@ export class ParticipantComponent implements OnInit {
   }
 
   pageChanged(event: any): void {
-    console.log('Page changed to: ' + event.page);
-    console.log('Number items per page: ' + event.itemsPerPage);
     let page = (event.page - 1) * this.itemsPerPage;
     this.participants = this.PARTICIPANT.slice(page, page + this.itemsPerPage);
+  }
+  changeStatut(participant){
+    participant.status=!participant.status;
+    this.participantService.update(participant).subscribe(data=>{
+      this.actif = this.PARTICIPANT.filter(P => P.status).length;
+      this.inscrit = this.PARTICIPANT.length;
+      console.log(data)
+      this.toastr.success("Modifier avec succès");
+    },
+    err=>{
+      participant.status=!participant.status;
+      console.log()
+      console.log(err)
+      this.toastr.error("Impossible de modifier les informations du participant");
+    })
+  }
+  delete(participant:Participant,i){
+    this.participantService.deleteById(participant.id).subscribe(data=>{
+      this.toastr.success("Supprimer avec succès");
+      this.actif = this.PARTICIPANT.filter(P => P.status).length;
+      this.inscrit = this.PARTICIPANT.length;
+      this.participants.splice(i,1);
+    },
+    err=>{
+      participant.status=!participant.status;
+      console.log()
+      console.log(err)
+      this.toastr.error("Impossible de supprimer les informations du participant");
+    })
   }
   inscrit: number = 0;
   enLigne: number = 0;

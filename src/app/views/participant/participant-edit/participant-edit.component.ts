@@ -21,6 +21,7 @@ export class ParticipantEditComponent implements OnInit {
   participant: Participant = new Participant();
   societes: Societe[] = [];
   pays:Pays[]=[];
+  typeProfil="PARTICIPANT";
 
   constructor(private route: Router, private competenceService: CompetenceService,
     private paysService:PaysService,private toastr:ToastrService,
@@ -39,6 +40,8 @@ export class ParticipantEditComponent implements OnInit {
 
   }
   add() {
+    
+    if(this.typeProfil=='PARTICIPANT'){
     if(this.participant.competences){
     let competences:Competence[]=[];
     for(let c of this.participant.competences){
@@ -50,9 +53,12 @@ export class ParticipantEditComponent implements OnInit {
     this.toastr.error("Veuillez choisir 3 compétences");
     return 
   }
-    this.participant.login=this.participant.email;
+    
     this.participant.password="123456";
     this.participant.pays = this.pays[""+this.participant.pays];
+  }
+    this.participant.profil=this.typeProfil;
+    this.participant.login=this.participant.email;
     this.participantService.add(this.participant).subscribe(data=>{
       this.toastr.success("Le participant a été ajouté avec succes");
       this.route.navigateByUrl("participant");

@@ -11,7 +11,6 @@ export class Participant extends Utilisateur{
     societe:Societe;
     responsable:string;
     status:boolean;
-    evenement?:string;
     prenom:string;;
     fonction:string;;
     email:string;;
@@ -22,5 +21,4 @@ export class Participant extends Utilisateur{
     competences:Competence[];
     notifications:Notification;
     rendezVous:RendezVous[];
-    status:boolean;
 }

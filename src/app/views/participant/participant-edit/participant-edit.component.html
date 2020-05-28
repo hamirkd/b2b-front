@@ -7,31 +7,42 @@
                 </div>
                 <div class="card-body">
                     <form #addForm="ngForm">
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Etat civil</label>
-                        <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio1" [(ngModel)]="participant.etatCivil" value="M" required>
-                          <label class="form-check-label" for="inlineRadio1">M.</label>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Type de compte</label>
+                            <div class="form-check form-check-inline mr-1">
+                              <input class="form-check-input" type="radio" name="typeProfil" id="typeProfil" [(ngModel)]="typeProfil" value="PARTICIPANT" required>
+                              <label class="form-check-label" for="typeProfil">PARTICIPANT</label>
+                            </div>
+                            <div class="form-check form-check-inline mr-1">
+                              <input class="form-check-input" type="radio" name="typeProfil" id="typeProfil2" [(ngModel)]="typeProfil" value="ADMINISTRATEUR" required>
+                              <label class="form-check-label" for="typeProfil2">ADMINISTRATEUR</label>
+                            </div>
                         </div>
-                        <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio2" [(ngModel)]="participant.etatCivil" value="Mme" required>
-                          <label class="form-check-label" for="inlineRadio2">Mme</label>
+                        <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">Etat civil</label>
+                            <div class="form-check form-check-inline mr-1">
+                              <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio1" [(ngModel)]="participant.etatCivil" value="M" required>
+                              <label class="form-check-label" for="inlineRadio1">M.</label>
+                            </div>
+                            <div class="form-check form-check-inline mr-1">
+                              <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio2" [(ngModel)]="participant.etatCivil" value="Mme" required>
+                              <label class="form-check-label" for="inlineRadio2">Mme</label>
+                            </div>
+                            <div class="form-check form-check-inline mr-1">
+                              <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio3" [(ngModel)]="participant.etatCivil" value="Mlle" required>
+                              <label class="form-check-label" for="inlineRadio3">Mlle</label>
+                            </div>
                         </div>
-                        <div class="form-check form-check-inline mr-1">
-                          <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio3" [(ngModel)]="participant.etatCivil" value="Mlle" required>
-                          <label class="form-check-label" for="inlineRadio3">Mlle</label>
-                        </div>
-                    </div>
 
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Nom</label>
                         <input type="text" name="nom" id="nom" [(ngModel)]="participant.nom" class="form-control col-md-6" required>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
                         <label class="col-md-2 col-form-label">Prénom(s)</label>
                         <input type="text" name="prenom" id="prenom" [(ngModel)]="participant.prenom" class="form-control col-md-6" required>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
                         <label class="col-md-2 col-form-label">Fonction</label>
                         <input type="text" name="fonction" id="fonction" [(ngModel)]="participant.fonction" class="form-control col-md-6" required>
                     </div>
@@ -39,34 +50,38 @@
                         <label class="col-md-2 col-form-label">Email</label>
                         <input type="email" name="email" id="email" [(ngModel)]="participant.email" class="form-control col-md-6" required>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
                         <label class="col-md-2 col-form-label">Téléphone</label>
                         <input type="tel" name="telephone" id="telephone" [(ngModel)]="participant.telephone" class="form-control col-md-6" required>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" *ngIf="typeProfil=='ADMINISTRATEUR'">
+                        <label class="col-md-2 col-form-label">Mot de passe</label>
+                        <input type="password" name="password" id="password" [(ngModel)]="participant.password" class="form-control col-md-6" required>
+                    </div>
+                    <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
                         <label class="col-md-2 col-form-label">Téléphone Portable</label>
                         <input type="tel" name="telephonePortable" id="telephonePortable" [(ngModel)]="participant.telephonePortable" class="form-control col-md-6" required>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
                         <label class="col-md-2 col-form-label">Pays</label>
                         <select class="form-control col-md-6" [(ngModel)]="participant.pays" name="pays" required>
                             <option *ngFor="let pay of pays;let i=index" [value]="i">{{pay.nom}}</option>
                         </select>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
                         <label class="col-md-2 col-form-label">Societe</label>
                         <select class="form-control col-md-6" [(ngModel)]="participant.societe" name="societe">
                             <option *ngFor="let societe of societes" [value]="societe">{{societe.nom}}</option>
                         </select>
                     </div>
                     
-                    <div class="form-group row">
+                    <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
                         <label class="col-md-2 col-form-label">Compétence</label>
                         <select class="form-control col-md-6" multiple [(ngModel)]="participant.competences" name="competences" required>
                             <option *ngFor="let competence of competences" [value]="competence.id">{{competence.nom}}</option>
                         </select>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
                         <label class="col-md-2 col-form-label">Activer planning</label>
                         <input type="checkbox" name="planning" id="planning" [(ngModel)]="participant.activerPlanning" class="form-check-input col-md-6">
                     </div>

@@ -6,7 +6,7 @@
         <span class="input-group-text">{{'EVENEMENT'|translate}}</span>
       </div>
       <select class="form-control" id="ccyear" name="evenement" [(ngModel)]="evenementSelected">
-        <option *ngFor="let evenement of evenements" [value]="evenement.titre">{{evenement.titre}}</option>
+        <option *ngFor="let evenement of evenements" [value]="evenement.id">{{evenement.titre}}</option>
       </select>
     </div>
     <div class="col-sm-4">

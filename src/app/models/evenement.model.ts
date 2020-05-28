@@ -1,4 +1,5 @@
 import { Competence } from './competence.models';
+import { Participant } from './participant.model';
 
 export class Evenement{
     id:string;
@@ -9,4 +10,5 @@ export class Evenement{
     dateFin:Date|string;
     nombreParticipant:'ILIMITE'|'LIMITE'='ILIMITE';
     nombre:number=0;
+    participants:Participant[]=[];
 }

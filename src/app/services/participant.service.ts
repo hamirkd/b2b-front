@@ -29,8 +29,12 @@ export class ParticipantService {
      return this.httpClient.post(this.baseUrl,participant,httpOptions) as Observable<Participant>;
    }
    
+   findByLogin(participant:Participant):Observable<Participant>{
+     return this.httpClient.post(this.baseUrl+"bylogin/",participant,httpOptions) as Observable<Participant>;
+   }
+   
    update(participant:Participant):Observable<Participant>{
-    return this.httpClient.put(this.baseUrl,{participant:participant}) as Observable<Participant>;
+    return this.httpClient.put(this.baseUrl,participant) as Observable<Participant>;
   }
   delete(participant:Participant):Observable<boolean>{
     return this.httpClient.delete(this.baseUrl+participant.id) as Observable<boolean>;

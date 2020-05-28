@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
+import { Participant } from '../models/participant.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
-user:User;
+user:Participant;
   constructor() { }
   isLogin():boolean{
     if(this.user)return true;
@@ -16,6 +17,6 @@ user:User;
     return false;
   }
   isAdmin():boolean{
-    return this.user.participant==null;
+    return this.user.profil=="ADMINISTRATEUR";
   }
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Participant } from '../../models/participant.model';
 import { RendezVous } from '../../models/rendez-vous';
+import { ParticipantService } from '../../services/participant.service';
+import { EvenementService } from '../../services/evenement.service';
+import { Evenement } from '../../models/evenement.model';
 
 @Component({
   selector: 'app-rendez-vous',
@@ -9,7 +12,7 @@ import { RendezVous } from '../../models/rendez-vous';
 })
 export class RendezVousComponent implements OnInit {
 
-  constructor() { }
+  constructor(private participantService:ParticipantService,private evenementService:EvenementService) { }
   data: any = {}
   pp: Participant[] = []
   ppp: RendezVous[] = [];
@@ -17,20 +20,27 @@ export class RendezVousComponent implements OnInit {
   tables :boolean = false;
   rendezVous :boolean = false;
   horaires :boolean = false;
-  evenements=[];
-  evenementSelected:any
+  evenements:Evenement[]=[];
+  evenementSelected:string;
+  PARTICIPANT:Participant[]=[]
 
 
   ngOnInit(): void {
     /**
      * Selection de tous les participants actifs
      */
+    this.participantService.findAll().subscribe(p=>{
+      this.PARTICIPANT=p;
+    })
+    this.evenementService.findAll().subscribe(e=>{
+      this.evenements=e;
+    })
 
   }
 
   selecteEvenement(){
     // console.log(this.evenementSelected)
-    this.pp = [];//PARTICIPANT.filter(p => p.status&&p.evenement==this.evenementSelected);
+    this.pp = this.evenements.find(e=>e.id==this.evenementSelected).participants;
     this.data['tables'] = 0;
     this.data['participants'] = this.pp.length;
     this.data['nbRendezVous'] = 0;

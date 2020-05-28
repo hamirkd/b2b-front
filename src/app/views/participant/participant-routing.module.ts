@@ -6,14 +6,14 @@ import { ParticipantEditComponent } from './participant-edit/participant-edit.co
 
 const routes: Routes = [
   {
-    path: 'add',
+    path: '',
     component: ParticipantComponent,
     data: {
       title: 'Participant'
     }
   },
   {
-    path: '',
+    path: 'add',
     component: ParticipantEditComponent,
     data: {
       title: 'Ajouter Participant'

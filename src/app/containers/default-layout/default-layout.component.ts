@@ -19,7 +19,7 @@ export class DefaultLayoutComponent implements OnInit {
     if (!this.session.isLogin()) {
       this.route.navigate(['/login']);
     }
-    if (this.session.user.participant) {
+    if (this.session.isAdmin()) {
       this.navItems = navItemsParticipant;
     }
 
@@ -36,7 +36,7 @@ export class DefaultLayoutComponent implements OnInit {
     if (!this.session.isLogin()) {
       this.route.navigate(['/login']);
     }
-    if (this.session.user.participant) {
+    if (!this.session.isAdmin()) {
       this.navItems = navItemsParticipant;
     }
   }
