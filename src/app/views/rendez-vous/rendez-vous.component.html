@@ -116,8 +116,8 @@
             <thead>
               <tr>
                 <th>{{'ID'|translate}}</th>
-                <th>{{'SOCIETE'|translate}} 1</th>
-                <th>{{'SOCIETE'|translate}} 2</th>
+                <th>{{'PARTICIPANT'|translate}} 1</th>
+                <th>{{'PARTICIPANT'|translate}} 2</th>
                 <th>{{'NUMEROTABLE'|translate}}</th>
                 <th>{{'DATEDEBUT'|translate}}</th>
                 <th>{{'DATEFIN'|translate}}</th>
@@ -126,8 +126,8 @@
             <tbody>
               <tr *ngFor="let p of rendezVousList;let i=index">
                 <td>{{i+1+((currentPage-1)*itemsPerPage)}}</td>
-                <td>{{p.p1.societe}}</td>
-                <td>{{p.p2.societe}}</td>
+                <td>{{p.p1.nom}} {{p.p1.prenom}}</td>
+                <td>{{p.p2.nom}} {{p.p2.prenom}}</td>
                 <td>{{p.numeroTable}}</td>
                 <td>{{p.dateDebut|date : 'd/M/y  HH:mm:ss'}}</td>
                 <td>{{p.dateFin|date : 'd/M/y  HH:mm:ss'}}</td>

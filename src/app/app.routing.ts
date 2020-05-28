@@ -13,8 +13,9 @@ import { SiteInternetComponent } from './site-internet/site-internet.component';
 
 export const routes: Routes = [
   {
-    path:'',
-    redirectTo:'dashboard'
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
   },
   {
     path: '404',
