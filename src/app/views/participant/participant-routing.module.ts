@@ -3,10 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ParticipantComponent } from './participant.component';
 import { ParticipantEditComponent } from './participant-edit/participant-edit.component';
+import { ParticipantFicheComponent } from './participant-fiche/participant-fiche.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: ParticipantComponent,
     data: {
       title: 'Participant'
@@ -24,6 +25,13 @@ const routes: Routes = [
     component: ParticipantEditComponent,
     data: {
       title: 'Modifier Participant'
+    }
+  },
+  {
+    path: '',
+    component: ParticipantFicheComponent,
+    data: {
+      title: 'Fiche Participant'
     }
   }
 ];

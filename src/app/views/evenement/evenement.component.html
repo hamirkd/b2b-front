@@ -25,7 +25,7 @@
                 <div class="card-footer">
                     <span class="badge badge-primary" *ngFor="let c of evenement.competences">{{c.nom}}</span>
                     <div>
-                        <span class="badge badge-sm badge-danger" *ngIf="evenement.nombreParticipant!='ILIMITE'">{{'NOMBRE-DE-PLACE'}} : {{evenement.nombre}}</span>
+                        <span class="badge badge-sm badge-danger" *ngIf="evenement.nombreParticipant!='ILIMITE'">{{'NOMBRE-DE-PLACE'|translate}} : {{evenement.nombre}}</span>
                     </div>
                     <div>
                         <span class="badge badge-sm badge-info">{{evenement.dateDebut}}</span>

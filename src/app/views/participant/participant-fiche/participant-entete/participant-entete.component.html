@@ -1,0 +1,28 @@
+<div class="card border-primary card-accent-warning">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="small text-muted">{{"INFORMATION-PARTICIPANT"|translate}}</div>
+            </div>
+            <div class="col-sm-7 d-none d-md-block">
+                <button type="button" class="btn btn-sm btn-danger float-right">{{'SUPPRIMER'|translate}}&nbsp;<i class="icon-user-follow"></i></button>
+            </div>
+        </div>
+        <div class="chart-wrapper" style="margin-top:20px;" *ngIf="participant">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="col-md-5">{{'NOM'|translate}}:</label>
+                    <label class="col-md-5">{{participant.nom}}</label>
+                    <label class="col-md-5">{{'PRENOM'|translate}}:</label>
+                    <label class="col-md-5">{{participant.prenom}}</label>
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-5">{{'SOCIETE'|translate}}:</label>
+                    <label class="col-md-5">{{participant.societe?.nom}}</label>
+                    <label class="col-md-5">{{'FONCTION'|translate}}:</label>
+                    <label class="col-md-5">{{participant.fonction}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

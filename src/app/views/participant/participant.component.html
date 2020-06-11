@@ -96,7 +96,8 @@
                         <tr *ngFor="let participant of participants;let i=index">
                             <td>{{participant.id}}</td>
                             <td>{{participant.societe?.nom}}</td>
-                            <td>{{participant.nom}} {{participant.prenom}}</td>
+                            <td style="cursor: pointer;" (click)="redirectedToParticipant(participant.id)">
+                                {{participant.nom}} {{participant.prenom}}</td>
                             <td>
                                 <span *ngFor="let c of participant.competences">
                                     {{c.nom}}</span>

@@ -12,17 +12,21 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from '../../shared-module';
 import { ParticipantEditComponent } from './participant-edit/participant-edit.component';
+import { ParticipantFicheComponent } from './participant-fiche/participant-fiche.component';
+import { ParticipantEnteteComponent } from './participant-fiche/participant-entete/participant-entete.component';
+import { ParticipantEvenementComponent } from './participant-fiche/participant-evenement/participant-evenement.component';
 
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 
 @NgModule({
-  declarations: [ParticipantComponent, ParticipantEditComponent],
+  declarations: [ParticipantComponent, ParticipantEditComponent, ParticipantFicheComponent, ParticipantEnteteComponent, ParticipantEvenementComponent],
   imports: [CommonModule,
     FormsModule,
     ParticipantRoutingModule,
     ChartsModule,
     BsDropdownModule,
-    ButtonsModule.forRoot(),
+    ButtonsModule.forRoot(),CollapseModule.forRoot(),
     HttpClientModule,
     PaginationModule.forRoot(),SharedModule
   ],

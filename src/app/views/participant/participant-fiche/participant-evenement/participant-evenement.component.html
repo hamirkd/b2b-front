@@ -1,0 +1,31 @@
+<div class="card border-primary card-accent-warning">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="small text-muted">{{"EVENEMENT"|translate}}</div>
+            </div>
+            <div class="col-sm-7 d-none d-md-block">
+                <button type="button" class="btn btn-sm btn-danger float-right">{{'ADD'|translate}}&nbsp;<i
+                        class="icon-user-follow"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row card" *ngFor="let evenement of evenements">
+            <div class="row col-md-12">
+                <label class="col-md-5">{{evenement.titre}}</label>
+                <label class="col-md-2">{{evenement.dateDebut|date}}</label>
+                <div class="col-sm-5 d-none d-md-block text-right">
+                    <label style="cursor: pointer;" (click)="evenement.isCollapsed=!evenement.isCollapsed">{{'VOIRRENDEZVOUS'|translate}}&nbsp;<i
+                            class="icon-arrow-right"></i></label>
+                </div>
+            </div>
+            <div class="card-body" (collapsed)="collapsed($event)" (expanded)="expanded($event)"
+                [collapse]="!evenement.isCollapsed">
+                <p>
+                    {{evenement.description}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

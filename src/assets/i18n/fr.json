@@ -32,10 +32,14 @@
     "GENERATIONDESRENDEZVOUS":"Génération des rendez-vous",
     "ADD":"Ajouter",
     "EVENEMENT":"Evènement",
+    "SUPPRIMER":"Supprimer",
     "VALIDER":"Valider",
     "EDIT":"Modifier",
     "PARTICIPER":"Participer",
     "DESABONNER":"Se désabonner",
-    "CONSULTERRDV":"Consulter Rendez vous"
+    "CONSULTERRDV":"Consulter Rendez vous",
+    "NOMBRE-DE-PLACE":"Nombre de place",
+    "INFORMATION-PARTICIPANT":"Information du participant",
+    "VOIRRENDEZVOUS":"Voir RDV"
 
   }

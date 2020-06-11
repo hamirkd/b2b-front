@@ -476,4 +476,7 @@ export class ParticipantComponent implements OnInit {
   enLigne: number = 0;
   actif: number = 0;
   inactif: number = 0;
+  redirectedToParticipant(participantId:string){
+    this.route.navigate(['participant',participantId]);
+  }
 }

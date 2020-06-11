@@ -33,5 +33,6 @@
   "ADD":"Add",
   "EVENEMENT":"Evenement",
   "VALIDER":"Validate",
-  "EDIT":"Edit"
+  "EDIT":"Edit",
+  "NOMBRE-DE-PLACE":"Number of place"
 }
