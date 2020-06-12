@@ -1,0 +1,22 @@
+<div class="card border-primary card-accent-warning">
+  <div class="card-header">
+      {{"ADD-EVENEMENT"|translate}}
+      <div class="card-header-actions" style="height: 21px;" >
+        <label class="switch switch-sm switch-label switch-info">
+            <button class="btn btn-sm" (click)="activeModal.dismiss('Cross click')"><i class="fa fa-close"></i></button>
+        </label>
+      </div>
+  </div>
+  <div class="card-body">
+    <div class="form-group row">
+      <label class="col-md-4 col-form-label">Evenement</label>
+      <select class="form-control col-md-7 input-sm" [(ngModel)]="evenementId" name="evenementId">
+        <option *ngFor="let ev of evenements;let i=index" [value]="ev.id">{{ev.titre}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="card-footer text-right">
+      <button class="btn btn-danger btn-sm" (click)="ajouterParticipant()">{{'ADD'|translate}}</button>
+      <button class="btn btn-default btn-sm" (click)="activeModal.close('Close click')">{{'CLOSE'|translate}}</button>
+  </div>
+</div>

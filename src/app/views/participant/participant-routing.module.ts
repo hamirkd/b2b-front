@@ -4,10 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { ParticipantComponent } from './participant.component';
 import { ParticipantEditComponent } from './participant-edit/participant-edit.component';
 import { ParticipantFicheComponent } from './participant-fiche/participant-fiche.component';
+import { ParticipantEvenementEditComponent } from './participant-fiche/participant-evenement-edit/participant-evenement-edit.component';
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: '',
     component: ParticipantComponent,
     data: {
       title: 'Participant'
@@ -28,11 +29,15 @@ const routes: Routes = [
     }
   },
   {
-    path: '',
+    path: ':id',
     component: ParticipantFicheComponent,
     data: {
       title: 'Fiche Participant'
     }
+  },
+  {
+    path: 'EditEvenement',
+    component: ParticipantEvenementEditComponent
   }
 ];
 

@@ -5,8 +5,8 @@
                 <div class="small text-muted">{{"EVENEMENT"|translate}}</div>
             </div>
             <div class="col-sm-7 d-none d-md-block">
-                <button type="button" class="btn btn-sm btn-danger float-right">{{'ADD'|translate}}&nbsp;<i
-                        class="icon-user-follow"></i></button>
+                <button type="button" class="btn btn-sm btn-danger float-right" (click)="add()">{{'ADD'|translate}}&nbsp;<i
+                        class="icon-plus"></i></button>
             </div>
         </div>
     </div>
@@ -16,15 +16,19 @@
                 <label class="col-md-5">{{evenement.titre}}</label>
                 <label class="col-md-2">{{evenement.dateDebut|date}}</label>
                 <div class="col-sm-5 d-none d-md-block text-right">
-                    <label style="cursor: pointer;" (click)="evenement.isCollapsed=!evenement.isCollapsed">{{'VOIRRENDEZVOUS'|translate}}&nbsp;<i
+                    <label style="cursor: pointer;" (click)="evenement.isCollapsed=!evenement.isCollapsed">{{'VOIRPLUS'|translate}}&nbsp;<i
                             class="icon-arrow-right"></i></label>
                 </div>
             </div>
             <div class="card-body" (collapsed)="collapsed($event)" (expanded)="expanded($event)"
                 [collapse]="!evenement.isCollapsed">
-                <p>
+                <div>
                     {{evenement.description}}
-                </p>
+                </div>
+                <div class="col-sm-12 d-none d-md-block text-right">
+                    <button type="button" class="btn btn-sm btn-primary float-right" (click)="delete(evenement.id)">{{'SUPPRIMER'|translate}}&nbsp;<i
+                            class="fa fa-close"></i></button>
+                </div>
             </div>
         </div>
     </div>

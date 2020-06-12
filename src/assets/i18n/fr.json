@@ -40,6 +40,9 @@
     "CONSULTERRDV":"Consulter Rendez vous",
     "NOMBRE-DE-PLACE":"Nombre de place",
     "INFORMATION-PARTICIPANT":"Information du participant",
-    "VOIRRENDEZVOUS":"Voir RDV"
+    "VOIRRENDEZVOUS":"Voir RDV",
+    "ADD-EVENEMENT":"Ajouter un évènement",
+    "CLOSE":"Fermer",
+    "VOIRPLUS":"Voir plus"
 
   }

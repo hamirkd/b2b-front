@@ -46,5 +46,8 @@ export class EvenementService {
   deleteById(id:string):Observable<boolean>{
     return this.httpClient.delete(this.baseUrl+id) as Observable<boolean>;
   }
-
+  
+  findByParticipant(participantId:string):Observable<Evenement[]>{
+    return this.httpClient.get(this.baseUrl+"findByParticipant/"+participantId) as Observable<Evenement[]>;
+  }
 }

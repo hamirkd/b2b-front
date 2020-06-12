@@ -47,6 +47,7 @@ import {HttpClient} from '@angular/common/http';
 import { SharedModule } from './shared-module';
 import { SiteInternetModule } from './site-internet/site-internet.module';
 import {ToastrModule} from 'ngx-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -64,7 +65,7 @@ import {ToastrModule} from 'ngx-toastr';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule,FormsModule,SharedModule,SiteInternetModule
+    ChartsModule,FormsModule,SharedModule,SiteInternetModule, NgbModule
   ],
   declarations: [
     AppComponent,
