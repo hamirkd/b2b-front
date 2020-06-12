@@ -4,6 +4,8 @@ import { RendezVous } from '../../models/rendez-vous';
 import { ParticipantService } from '../../services/participant.service';
 import { EvenementService } from '../../services/evenement.service';
 import { Evenement } from '../../models/evenement.model';
+import { RendezVousService } from '../../services/rendez-vous.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rendez-vous',
@@ -12,7 +14,10 @@ import { Evenement } from '../../models/evenement.model';
 })
 export class RendezVousComponent implements OnInit {
 
-  constructor(private participantService:ParticipantService,private evenementService:EvenementService) { }
+  constructor(
+    private rendezVousService:RendezVousService,private toastr:ToastrService,
+    private participantService:ParticipantService,
+    private evenementService:EvenementService) { }
   data: any = {}
   pp: Participant[] = []
   ppp: RendezVous[] = [];
@@ -22,6 +27,7 @@ export class RendezVousComponent implements OnInit {
   horaires :boolean = false;
   evenements:Evenement[]=[];
   evenementSelected:string;
+  evenementSelectedData:Evenement;
   PARTICIPANT:Participant[]=[]
 
 
@@ -40,7 +46,9 @@ export class RendezVousComponent implements OnInit {
 
   selecteEvenement(){
     // console.log(this.evenementSelected)
+    this.evenementSelectedData=this.evenements.find(e=>e.id==this.evenementSelected);
     this.pp = this.evenements.find(e=>e.id==this.evenementSelected).participants;
+    if(!this.pp)this.pp=[]
     this.data['tables'] = 0;
     this.data['participants'] = this.pp.length;
     this.data['nbRendezVous'] = 0;
@@ -50,6 +58,7 @@ export class RendezVousComponent implements OnInit {
     this.rendezVousList =[]
     this.ppp = []
     this.totalItems = this.ppp.length
+    this.getRendezVous();
   }
 
   genererRendezVous() {
@@ -60,17 +69,17 @@ export class RendezVousComponent implements OnInit {
      * participant 1 => participant 2 <=> participant 2 => participant 1
      */
     this.ppp=[];
-    for (let p1 of this.pp) {
-      for (let p2 of this.pp) {
-        if (this.verifierNombreRencontreParticipant(p1))
+    for (let participant1 of this.pp) {
+      for (let participant2 of this.pp) {
+        if (this.verifierNombreRencontreParticipant(participant1))
           continue;
-        if (this.verifierNombreRencontreParticipant(p2))
+        if (this.verifierNombreRencontreParticipant(participant2))
           continue;
-        if (p1.id == p2.id) continue;
-        if (this.verifierPermutation(p1, p2)) continue;
+        if (participant1.id == participant2.id) continue;
+        if (this.verifierPermutation(participant1, participant2)) continue;
         const rdv:RendezVous=new RendezVous();
-        rdv.p1=p1;
-        rdv.p2=p2;
+        rdv.participant1=participant1;
+        rdv.participant2=participant2;
         rdv.numeroTable='0';
         rdv.dateDebut='';
         rdv.dateFin='';
@@ -116,8 +125,8 @@ export class RendezVousComponent implements OnInit {
     for (let i = 1; i <= this.data['nbRendezVousParParticipant']; i++) {
       for (let k = 0; k < ppp.length; k++) {
         let p = ppp[k];
-        if (this.verifierNombreRencontreOrdre(p.p1, i, pppOrdre) ||
-          this.verifierNombreRencontreOrdre(p.p2, i, pppOrdre)) {
+        if (this.verifierNombreRencontreOrdre(p.participant1, i, pppOrdre) ||
+          this.verifierNombreRencontreOrdre(p.participant2, i, pppOrdre)) {
           continue;
         }
         pppOrdre.push(p);
@@ -132,9 +141,9 @@ export class RendezVousComponent implements OnInit {
      *  de table
     */
     let numeroTable = 0;
-    let date = new Date();
+    let date = new Date(this.evenementSelectedData.dateFin);
     date.setHours(8, 0, 0);
-    let date2 = new Date();
+    let date2 = new Date(this.evenementSelectedData.dateFin);
     date2.setHours(8, this.data['dureeReunion'], 0);
     for (let p of this.ppp) {
       numeroTable++;
@@ -156,29 +165,30 @@ export class RendezVousComponent implements OnInit {
 
     let page = this.currentPage * this.itemsPerPage;
     this.totalItems = this.ppp.length
-    this.rendezVousList = this.ppp.slice(page, page + this.itemsPerPage);
+    this.rendezVousList = this.ppp;
+    this.rendezVousList.slice(page, page + this.itemsPerPage);
 
   }
 
-  verifierPermutation(p1, p2) {
+  verifierPermutation(participant1, participant2) {
     for (let p of this.ppp) {
-      if (p.p1 == p1 && p.p2 == p2 || p.p2 == p1 && p.p1 == p2)
+      if (p.participant1 == participant1 && p.participant2 == participant2 || p.participant2 == participant1 && p.participant1 == participant2)
         return true;
     }
     return false;
   }
 
-  verifierNombreRencontreParticipant(p1: Participant) {
+  verifierNombreRencontreParticipant(participant1: Participant) {
     let nombre = 0;
     this.ppp.forEach(p => {
-      if (p1.id == p.p1.id || p1 == p.p2) nombre++;
+      if (participant1.id == p.participant1.id || participant1 == p.participant2) nombre++;
     })
     return nombre >= this.data['nbRendezVousParParticipant'];
   }
-  verifierNombreRencontreOrdre(p1: Participant, nbRendezVousParParticipant, ppp) {
+  verifierNombreRencontreOrdre(participant1: Participant, nbRendezVousParParticipant, ppp) {
     let nombre = 0;
     ppp.forEach(p => {
-      if (p1.id == p.p1.id || p1.id == p.p2.id) nombre++;
+      if (participant1.id == p.participant1.id || participant1.id == p.participant2.id) nombre++;
     })
     return nombre >= nbRendezVousParParticipant;
   }
@@ -210,6 +220,32 @@ export class RendezVousComponent implements OnInit {
    */
   saveData(title, myInterval) {
     this.data[title] = myInterval;
+  }
+
+  sauvegarder(){
+    for(const rdv of this.ppp){
+      rdv.evenement=this.evenementSelectedData;
+      rdv.evenement.participants=null;
+      rdv.participant1.competences=null;
+    }
+    this.rendezVousService.sauvegarderRendezVousGenerer(this.ppp).subscribe(o=>{
+      this.toastr.success("Les rendez-vous ont été enregistré avec succès");
+      console.log(o);
+    },err=>{
+      this.toastr.error("Impossible d'enregistrer, Veuillez reéssayer");
+      console.log(err);
+    })
+  }
+
+  getRendezVous(){
+    this.rendezVousService.findByEvenement(this.evenementSelected).subscribe(e=>{
+      this.ppp = e;
+      let page = this.currentPage * this.itemsPerPage;
+      this.totalItems = this.ppp.length
+      this.rendezVousList = this.ppp;
+      this.rendezVousList.slice(page, page + this.itemsPerPage);
+      console.log(e)
+    },err=>console.log(err));
   }
 
 

@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
-                            <label class="col-md-2 col-form-label">Etat civil</label>
+                            <label class="col-md-2 col-form-label">{{'Etat civil'|translate}}</label>
                             <div class="form-check form-check-inline mr-1">
                                 <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio1"
                                     [(ngModel)]="participant.etatCivil" value="M" required>
@@ -40,17 +40,17 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Nom</label>
+                            <label class="col-md-2 col-form-label">{{'Nom'|translate}}</label>
                             <input type="text" name="nom" id="nom" [(ngModel)]="participant.nom"
                                 class="form-control col-md-6" required>
                         </div>
                         <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
-                            <label class="col-md-2 col-form-label">Prénom(s)</label>
+                            <label class="col-md-2 col-form-label">{{'Prénom(s)'|translate}}</label>
                             <input type="text" name="prenom" id="prenom" [(ngModel)]="participant.prenom"
                                 class="form-control col-md-6" required>
                         </div>
                         <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
-                            <label class="col-md-2 col-form-label">Fonction</label>
+                            <label class="col-md-2 col-form-label">{{'Fonction'|translate}}</label>
                             <input type="text" name="fonction" id="fonction" [(ngModel)]="participant.fonction"
                                 class="form-control col-md-6" required>
                         </div>
@@ -60,35 +60,35 @@
                                 class="form-control col-md-6" required>
                         </div>
                         <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
-                            <label class="col-md-2 col-form-label">Téléphone</label>
+                            <label class="col-md-2 col-form-label">{{'Téléphone'|translate}}</label>
                             <input type="tel" name="telephone" id="telephone" [(ngModel)]="participant.telephone"
                                 class="form-control col-md-6" required>
                         </div>
                         <div class="form-group row" *ngIf="typeProfil=='ADMINISTRATEUR'">
-                            <label class="col-md-2 col-form-label">Mot de passe</label>
+                            <label class="col-md-2 col-form-label">{{'Mot de passe'|translate}}</label>
                             <input type="password" name="password" id="password" [(ngModel)]="participant.password"
                                 class="form-control col-md-6" required>
                         </div>
                         <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
-                            <label class="col-md-2 col-form-label">Téléphone Portable</label>
+                            <label class="col-md-2 col-form-label">{{'Téléphone Portable'|translate}}</label>
                             <input type="tel" name="telephonePortable" id="telephonePortable"
                                 [(ngModel)]="participant.telephonePortable" class="form-control col-md-6" required>
                         </div>
                         <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
-                            <label class="col-md-2 col-form-label">Pays</label>
+                            <label class="col-md-2 col-form-label">{{'Pays'|translate}}</label>
                             <select class="form-control col-md-6" [(ngModel)]="participant.pays" name="pays" required>
                                 <option *ngFor="let pay of pays;let i=index" [value]="i">{{pay.nom}}</option>
                             </select>
                         </div>
                         <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
-                            <label class="col-md-2 col-form-label">Societe</label>
+                            <label class="col-md-2 col-form-label">{{'Societe'|translate}}</label>
                             <select class="form-control col-md-6" [(ngModel)]="participant.societe" name="societe">
                                 <option *ngFor="let societe of societes;let i=index" [value]="i">{{societe.nom}}</option>
                             </select>
                         </div>
 
                         <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
-                            <label class="col-md-2 col-form-label">Compétence</label>
+                            <label class="col-md-2 col-form-label">{{'Compétence'|translate}}</label>
 
                             <div class="col-md-6 col-form-label row">
                                 <div class="form-check col-md-3" *ngFor="let competence of competences">
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
-                            <label class="col-md-2 col-form-label">Activer planning</label>
+                            <label class="col-md-2 col-form-label">{{'Activer planning'|translate}}</label>
                             <div class="col-md-6 col-form-label row">
                                 <div class="form-check col-md-3">
                                     <input class="form-check-input" type="checkbox"

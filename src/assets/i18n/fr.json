@@ -43,6 +43,17 @@
     "VOIRRENDEZVOUS":"Voir RDV",
     "ADD-EVENEMENT":"Ajouter un évènement",
     "CLOSE":"Fermer",
-    "VOIRPLUS":"Voir plus"
+    "VOIRPLUS":"Voir plus",
+    "Etat civil":"Etat civil",
+    "Nom":"Nom",
+    "Prénom(s)":"Prénom(s)",
+    "Fonction":"Fonction",
+    "Téléphone":"Téléphone",
+    "Mot de passe":"Mot de passe",
+    "Téléphone Portable":"Téléphone Portable",
+    "Societe":"Societe",
+    "Compétence":"Compétence",
+    "Activer planning":"Activer planning",
+    "Sauvegarder":"Sauvegarder"
 
   }

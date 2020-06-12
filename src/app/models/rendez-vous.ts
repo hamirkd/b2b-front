@@ -1,11 +1,13 @@
 import { Participant } from './participant.model';
+import { Evenement } from './evenement.model';
 
 export class RendezVous{
     id:string;
-    p1:Participant;
-    p2:Participant;
+    participant1:Participant;
+    participant2:Participant;
     dateDebut:any;
     dateFin:any;
     numeroTable:string;
     duree:number;
+    evenement:Evenement;
 }

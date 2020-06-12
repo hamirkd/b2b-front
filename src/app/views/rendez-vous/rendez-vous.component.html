@@ -9,10 +9,13 @@
         <option *ngFor="let evenement of evenements" [value]="evenement.id">{{evenement.titre}}</option>
       </select>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-2">
       <label for="ccyear">&nbsp;</label>
       <button class="btn btn-danger" (click)="selecteEvenement()">{{'VALIDER'|translate}}</button>
     </div>
+    <div class="col-sm-4 card" *ngIf="evenementSelectedData">
+      <label for="">{{'Période : '|translate}} {{'Du'|translate}} {{evenementSelectedData?.dateDebut|date: 'd/M/y'}} 
+        {{'au'|translate}} {{evenementSelectedData?.dateFin|date: 'd/M/y'}}</label></div>
   </div>
   <div class="row" *ngIf="data.participants">
     <div class="col-sm-4 col-lg-3">
@@ -103,8 +106,10 @@
   </div>
   <div class="row" *ngIf="data.participants">
     <div class="align-items-center mx-auto">
-      <button class="btn btn-danger" (click)="genererRendezVous()">{{'GENERATIONDESRENDEZVOUS'|translate}}&nbsp;<i
+      <button class="btn btn-success" (click)="genererRendezVous()">{{'GENERATIONDESRENDEZVOUS'|translate}}&nbsp;<i
           class="fa fa-recycle"></i></button>
+      <button class="btn btn-danger" (click)="sauvegarder()" *ngIf="rendezVousList&&rendezVousList.length>0">{{'Sauvegarder'|translate}}&nbsp;<i
+          class="fa fa-save"></i></button>
     </div>
   </div>
   <div class="row" *ngIf="data.participants">
@@ -126,8 +131,8 @@
             <tbody>
               <tr *ngFor="let p of rendezVousList;let i=index">
                 <td>{{i+1+((currentPage-1)*itemsPerPage)}}</td>
-                <td>{{p.p1.nom}} {{p.p1.prenom}}</td>
-                <td>{{p.p2.nom}} {{p.p2.prenom}}</td>
+                <td>{{p.participant1.nom}} {{p.participant1.prenom}}</td>
+                <td>{{p.participant2.nom}} {{p.participant2.prenom}}</td>
                 <td>{{p.numeroTable}}</td>
                 <td>{{p.dateDebut|date : 'd/M/y  HH:mm:ss'}}</td>
                 <td>{{p.dateFin|date : 'd/M/y  HH:mm:ss'}}</td>
@@ -142,7 +147,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <div class="col-xs-12 col-12 d-sm-down-none">
+        <div class="col-xs-12 col-lg-12 d-sm-down-none">
           <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" [maxSize]="7"
             (pageChanged)="pageChanged($event)" class="pagination-sm" previousText="&lsaquo;" nextText="&rsaquo;"
             firstText="&laquo;" lastText="&raquo;" [boundaryLinks]="true"></pagination>

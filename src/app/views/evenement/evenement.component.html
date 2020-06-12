@@ -13,14 +13,14 @@
             <div class="card border-primary" [ngClass]="{'card-accent-warning':evenement.participer}">
                 <div class="card-header">
                     {{evenement.titre}}
-                    <div class="card-header-actions" style="height: 21px;" >
+                    <div class="card-header-actions" style="height: 21px;" *ngIf="session.isAdmin()">
                       <label class="switch switch-sm switch-label switch-info">
                           <button class="btn btn-sm" (click)="deleteById(evenement.id)"><i class="cui-delete icons"></i></button>
                       </label>
                     </div>
                 </div>
                 <div class="card-body">
-                    {{evenement.description}}
+                    {{evenement.description| slice:0:250}}
                 </div>
                 <div class="card-footer">
                     <span class="badge badge-primary" *ngFor="let c of evenement.competences">{{c.nom}}</span>
