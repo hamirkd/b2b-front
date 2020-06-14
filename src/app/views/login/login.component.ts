@@ -17,6 +17,7 @@ export class LoginComponent {
     if(sessionService.isLogin()){
       this.route.navigateByUrl("dashboard")
     }
+    this.toastr.success("Ici");
   }
 
   connecter(){

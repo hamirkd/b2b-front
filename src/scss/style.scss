@@ -21,6 +21,7 @@
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 @import '~ngx-toastr/toastr-bs4-alert';
+@import "../../node_modules/ngx-toastr/toastr.css";
 app-rendez-vous-edit,app-participant-evenement-edit{
     margin-bottom: -30px!important;
 }

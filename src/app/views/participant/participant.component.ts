@@ -402,7 +402,6 @@ export class ParticipantComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     for (let i = 0; i <= this.mainChartElements; i++) {
       this.mainChartData1.push(this.random(50, 200));
       this.mainChartData2.push(this.random(80, 100));

@@ -55,15 +55,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     AppRoutingModule,
     AppAsideModule,
-    AppBreadcrumbModule.forRoot(),ToastrModule.forRoot({  
-      positionClass:'top-right',  
-      closeButton: true,
-    }),
+    AppBreadcrumbModule.forRoot(),
     AppFooterModule,
     AppHeaderModule,
     AppSidebarModule,
     PerfectScrollbarModule,
-    BsDropdownModule.forRoot(),
+    BsDropdownModule.forRoot(),ToastrModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,FormsModule,SharedModule,SiteInternetModule, NgbModule
   ],
