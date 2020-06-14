@@ -1,5 +1,6 @@
 import { Competence } from './competence.models';
 import { Participant } from './participant.model';
+import { Langue } from './langue.model';
 
 export class Evenement{
     id:string;
@@ -11,4 +12,5 @@ export class Evenement{
     nombreParticipant:'ILIMITE'|'LIMITE'='ILIMITE';
     nombre:number=0;
     participants:Participant[]=[];
+    langues:Langue[];
 }

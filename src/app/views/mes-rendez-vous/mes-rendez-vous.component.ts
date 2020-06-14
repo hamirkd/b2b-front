@@ -19,5 +19,16 @@ export class MesRendezVousComponent implements OnInit {
       console.log(this.sessionService.user.login)
     },err=>console.log(err))
   }
+  isEmpty(){
+    return this.rendezVousList.length<=0;
+  }
+  annuler(rendezVous:RendezVous){
+    rendezVous.annuler=true;
+    this.rendezVousService.update(rendezVous).subscribe(a=>{
+      this.ngOnInit();
+    },err=>{
+      console.log(err)
+    })
+  }
 
 }

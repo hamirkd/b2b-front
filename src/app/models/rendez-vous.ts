@@ -10,4 +10,5 @@ export class RendezVous{
     numeroTable:string;
     duree:number;
     evenement:Evenement;
+    annuler:boolean;
 }

@@ -1,1 +1,125 @@
-<p>mon-compte works!</p>
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="card border-primary">
+                <div class="card-header">
+                    {{"Information du compte"|translate}}
+                </div>
+                <div class="card-body">
+                    <form #addForm="ngForm">
+                        <div class="form-group row" *ngIf="participant.profil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">{{'Etat civil'|translate}}</label>
+                            <div class="form-check form-check-inline mr-1">
+                                <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio1"
+                                    [(ngModel)]="participant.etatCivil" value="M" required>
+                                <label class="form-check-label" for="inlineRadio1">M.</label>
+                            </div>
+                            <div class="form-check form-check-inline mr-1">
+                                <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio2"
+                                    [(ngModel)]="participant.etatCivil" value="Mme" required>
+                                <label class="form-check-label" for="inlineRadio2">Mme</label>
+                            </div>
+                            <div class="form-check form-check-inline mr-1">
+                                <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio3"
+                                    [(ngModel)]="participant.etatCivil" value="Mlle" required>
+                                <label class="form-check-label" for="inlineRadio3">Mlle</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">{{'Nom'|translate}}</label>
+                            <input type="text" name="nom" id="nom" [(ngModel)]="participant.nom"
+                                class="form-control col-md-6" required>
+                        </div>
+                        <div class="form-group row" *ngIf="participant.profil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">{{'Prénom(s)'|translate}}</label>
+                            <input type="text" name="prenom" id="prenom" [(ngModel)]="participant.prenom"
+                                class="form-control col-md-6" required>
+                        </div>
+                        <div class="form-group row" *ngIf="participant.profil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">{{'Fonction'|translate}}</label>
+                            <input type="text" name="fonction" id="fonction" [(ngModel)]="participant.fonction"
+                                class="form-control col-md-6" required>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Email</label>
+                            <input type="email" name="email" id="email" [(ngModel)]="participant.email"
+                                class="form-control col-md-6" required disabled>
+                        </div>
+                        <div class="form-group row" *ngIf="participant.profil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">{{'Téléphone'|translate}}</label>
+                            <input type="tel" name="telephone" id="telephone" [(ngModel)]="participant.telephone"
+                                class="form-control col-md-6" required>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">{{'Mot de passe'|translate}}</label>
+                            <input type="password" name="password1" id="password1" [(ngModel)]="password1"
+                                class="form-control col-md-6" required>
+                        </div>
+                        <div class="form-group row" *ngIf="participant.profil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">{{'Téléphone Portable'|translate}}</label>
+                            <input type="tel" name="telephonePortable" id="telephonePortable"
+                                [(ngModel)]="participant.telephonePortable" class="form-control col-md-6" required>
+                        </div>
+                        <div class="form-group row" *ngIf="participant.profil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">{{'Pays'|translate}}</label>
+                            <select class="form-control col-md-6" [(ngModel)]="selectedPaysId" name="pays" required>
+                                <option *ngFor="let pay of pays" [value]="pay.id">{{pay.nom}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group row" *ngIf="participant.profil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">{{'Societe'|translate}}</label>
+                            <select class="form-control col-md-6" [(ngModel)]="selectedSocieteId" name="societe">
+                                <option *ngFor="let societe of societes" [value]="societe.id">{{societe.nom}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group row" *ngIf="participant.profil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">{{'Compétence'|translate}}</label>
+                            <div class="col-md-6 col-form-label row">
+                                <div class="form-check col-md-3" *ngFor="let competence of competences">
+                                    <input class="form-check-input" type="checkbox" [value]="competence.id"
+                                        [id]="competence.id" (click)="addCompetence(competence)" [checked]="haveCompetence(competence)">
+                                    <label class="form-check-label" [for]="competence.id">
+                                        {{competence.nom}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" *ngIf="participant.profil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">{{'Langue'|translate}}</label>
+
+                            <div class="col-md-6 col-form-label row">
+                                <div class="form-check col-md-3" *ngFor="let langue of langues">
+                                    <input class="form-check-input" type="checkbox"
+                                        [id]="langue.id" (click)="addLangue(langue)" [checked]="haveLangue(langue)">
+                                    <label class="form-check-label" [for]="langue.id">
+                                        {{langue.nom}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" *ngIf="participant.profil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">{{'Activer planning'|translate}}</label>
+                            <div class="col-md-6 col-form-label row">
+                                <div class="form-check col-md-3">
+                                    <input class="form-check-input" type="checkbox"
+                                        [(ngModel)]="participant.activerPlanning" [id]="planning" name="planning">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="card-header-actions">
+                        <button class="btn btn-danger" (click)="add()" [disabled]="!addForm.valid">{{'Sauvegarder'|translate}} <i
+                                class="fa fa-file"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+
+    </div>
+    <!--/.row-->
+</div>

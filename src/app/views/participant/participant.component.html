@@ -75,14 +75,15 @@
                 </div>
                 <!--/.col-->
                 <div class="col-sm-7 d-none d-md-block">
-                    <button type="button" class="btn btn-danger float-right" [routerLink]="['add']">{{'ADD'|translate}}&nbsp;<i class="icon-user-follow"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm float-right"
+                        [routerLink]="['add']">{{'ADD'|translate}}&nbsp;<i class="icon-user-follow"></i></button>
                 </div>
                 <!--/.col-->
             </div>
             <!--/.row-->
             <div class="chart-wrapper" style="margin-top:40px;">
 
-                <table class="table table-striped">
+                <table class="table table-bordered table-striped table-sm">
                     <thead>
                         <tr>
                             <th>{{'ID'|translate}}</th>
@@ -94,7 +95,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let participant of participants;let i=index">
-                            <td>{{participant.id}}</td>
+                            <td>{{i+1}}</td>
                             <td>{{participant.societe?.nom}}</td>
                             <td style="cursor: pointer;" (click)="redirectedToParticipant(participant.id)">
                                 {{participant.nom}} {{participant.prenom}}</td>
@@ -103,16 +104,17 @@
                                     {{c.nom}}</span>
                             </td>
                             <td>
+                                <div class="btn-group float-right"><label
+                                        class="switch switch-label switch-pill switch-success">
+                                        <input type="checkbox" class="switch-input" [checked]="participant.status"
+                                            (click)="changeStatut(participant)">
+                                        <span class="switch-slider" data-checked="&#x2715;"
+                                            data-unchecked="&#x2713;"></span>
+                                    </label>
+                                    <button class="btn btn-danger btn-sm" (click)="delete(participant,i)"><i
+                                            class="fa fa-remove"></i></button>
+                                </div>
 
-                                <label class="switch switch-label switch-pill switch-success">
-                                    <input type="checkbox" class="switch-input" [checked]="participant.status" (click)="changeStatut(participant)">
-                                    <span class="switch-slider" data-checked="&#x2715;"
-                                        data-unchecked="&#x2713;"></span>
-                                </label>
-
-                            </td>
-                            <td>
-                                <button class="btn btn-danger btn-sm" (click)="delete(participant,i)"><i class="fa fa-remove"></i></button>
                             </td>
                         </tr>
                     </tbody>
@@ -124,7 +126,7 @@
 
                 <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage"
                     [maxSize]="7" (pageChanged)="pageChanged($event)" class="pagination-sm" previousText="&lsaquo;"
-                    nextText="&rsaquo;"  firstText="&laquo;" lastText="&raquo;" [boundaryLinks]="true"></pagination>
+                    nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [boundaryLinks]="true"></pagination>
             </div>
         </div>
     </div>

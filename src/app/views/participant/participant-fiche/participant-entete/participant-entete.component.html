@@ -5,7 +5,7 @@
                 <div class="small text-muted">{{"INFORMATION-PARTICIPANT"|translate}}</div>
             </div>
             <div class="col-sm-7 d-none d-md-block">
-                <button type="button" class="btn btn-sm btn-danger float-right">{{'SUPPRIMER'|translate}}&nbsp;<i class="icon-user-follow"></i></button>
+                <button type="button" class="btn btn-sm btn-danger float-right" (click)="delete()">{{'SUPPRIMER'|translate}}&nbsp;<i class="icon-user-follow"></i></button>
             </div>
         </div>
         <div class="chart-wrapper" style="margin-top:20px;" *ngIf="participant">

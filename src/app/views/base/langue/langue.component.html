@@ -1,0 +1,33 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i> {{'Configuration des langues'|translate}}
+            <div class="btn-group float-right">
+              <button class="btn btn-sm btn-danger" (click)="add()">{{'ADD'|translate}}</button>
+            </div>
+         
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>{{'Nom'}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let langue of langues">
+                  <td>{{langue.nom}} 
+                    <div class="btn-group float-right">
+                      <button class="btn btn-sm" (click)="edit(langue)">{{'EDIT'|translate}}</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -13,6 +13,13 @@ import { PopoversComponent } from './popovers.component';
 import { ProgressComponent } from './progress.component';
 import { TooltipsComponent } from './tooltips.component';
 import { NavbarsComponent } from './navbars/navbars.component';
+import { LangueComponent } from './langue/langue.component';
+import { LangueEditComponent } from './langue-edit/langue-edit.component';
+import { CompetenceComponent } from './competence/competence.component';
+import { CompetenceEditComponent } from './competence-edit/competence-edit.component';
+import { SocieteComponent } from './societe/societe.component';
+import { SocieteEditComponent } from './societe-edit/societe-edit.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 
 const routes: Routes = [
   {
@@ -108,8 +115,58 @@ const routes: Routes = [
         data: {
           title: 'Navbars'
         }
+      },
+      {
+        path: 'langue',
+        component: LangueComponent,
+        data: {
+          title: 'Langues'
+        }
+      },
+      {
+        path: 'competence',
+        component: CompetenceComponent,
+        data: {
+          title: 'Competences'
+        }
+      },
+      {
+        path: 'competence-edit',
+        component: CompetenceEditComponent,
+        data: {
+          title: 'Competences'
+        }
+      },
+      {
+        path: 'societe',
+        component: SocieteComponent,
+        data: {
+          title: 'Societes'
+        }
+      },
+      {
+        path: 'societe-edit',
+        component: SocieteEditComponent,
+        data: {
+          title: 'Societes'
+        }
+      },
+      {
+        path: 'utilisateur',
+        component: UtilisateurComponent,
+        data: {
+          title: 'Utilisateurs'
+        }
       }
     ]
+  },
+  
+  {
+    path: 'langueedit',
+    component: LangueEditComponent,
+    data: {
+      title: 'Langue'
+    }
   }
 ];
 

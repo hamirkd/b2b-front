@@ -25,12 +25,14 @@
     "DATEDEBUT":"Date début",
     "DATEFIN":"Date fin",
     "PARTICIPANT":"Participants",
+    "ADMINISTRATEUR":"Administrateurs",
     "INSCRIPTION":"Inscription",
     "TABLES":"Tables",
     "RENDEZVOUS":"Rendez-vous",
     "HORAIRES":"Horaires",
     "GENERATIONDESRENDEZVOUS":"Génération des rendez-vous",
     "ADD":"Ajouter",
+    "DELETE":"Supprimer",
     "EVENEMENT":"Evènement",
     "SUPPRIMER":"Supprimer",
     "VALIDER":"Valider",
@@ -54,6 +56,9 @@
     "Societe":"Societe",
     "Compétence":"Compétence",
     "Activer planning":"Activer planning",
-    "Sauvegarder":"Sauvegarder"
+    "Sauvegarder":"Sauvegarder",
+    "Information du compte":"Information du compte",
+    "ANNULER":"Annuler",
+    "CREERMONCOMPTE":"Créer mon compte"
 
   }

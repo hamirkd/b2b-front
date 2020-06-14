@@ -9,6 +9,10 @@ import { Societe } from '../../../models/societe.model';
 import { Pays } from '../../../models/pays.model';
 import { PaysService } from '../../../services/pays.service';
 import { ToastrService } from 'ngx-toastr';
+import { Langue } from '../../../models/langue.model';
+import { LangueService } from '../../../services/langue.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SocieteEditComponent } from '../../base/societe-edit/societe-edit.component';
 
 @Component({
   selector: 'app-participant-edit',
@@ -19,12 +23,14 @@ export class ParticipantEditComponent implements OnInit {
 
   competences: Competence[] = [];
   participant: Participant = new Participant();
+  langues:Langue[]=[];
   societes: Societe[] = [];
   pays: Pays[] = [];
   typeProfil = "PARTICIPANT";
 
-  constructor(private route: Router, private competenceService: CompetenceService,
-    private paysService: PaysService, private toastr: ToastrService,
+  constructor(
+    private modalService: NgbModal,private route: Router, private competenceService: CompetenceService,
+    private paysService: PaysService, private toastr: ToastrService,private langueService:LangueService,
     private participantService: ParticipantService, private societeService: SocieteService) { }
 
   ngOnInit(): void {
@@ -34,8 +40,11 @@ export class ParticipantEditComponent implements OnInit {
     this.societeService.findAll().subscribe(data => {
       this.societes = data;
     });
-    this.paysService.findAll().subscribe(d => {
-      this.pays = d;
+    this.paysService.findAll().subscribe(pays => {
+      this.pays = pays;
+    })
+    this.langueService.findAll().subscribe(langues=>{
+      this.langues=langues
     })
   }
   add() {
@@ -53,8 +62,8 @@ export class ParticipantEditComponent implements OnInit {
     this.participant.profil = this.typeProfil;
     this.participant.login = this.participant.email;
     this.participantService.add(this.participant).subscribe(data => {
-      this.toastr.success("Le participant a été ajouté avec succes");
-     // this.route.navigateByUrl("participant");
+     this.toastr.success("Le participant a été ajouté avec succes");
+     this.route.navigateByUrl("participant");
      console.log(data)
     }, err => {
       console.log(err)
@@ -74,6 +83,25 @@ export class ParticipantEditComponent implements OnInit {
       this.participant.competences.splice(index, 1);
     }
     console.log(this.participant.competences.length)
+  }
+
+  addLangue(langue :Langue) {
+    if (!this.participant.langues) {
+      this.participant.langues = [];
+    }
+    const index = this.participant.langues.findIndex(c => c.id == langue.id);
+    if (index < 0) {
+      this.participant.langues.push(langue);
+    }
+    else {
+      this.participant.langues.splice(index, 1);
+    }
+    console.log(this.participant.langues.length)
+  }
+
+  addSociete(){
+    const modalRef = this.modalService.open(SocieteEditComponent);
+    modalRef.componentInstance.parent=this;
   }
 
 }

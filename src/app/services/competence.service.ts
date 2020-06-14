@@ -21,4 +21,8 @@ export class CompetenceService {
    findAll():Observable<Competence[]>{
      return this.httpClient.get(this.baseUrl,httpOptions) as Observable<Competence[]>;
    }
+   
+   add(competence:Competence):Observable<Competence>{
+     return this.httpClient.post(this.baseUrl,competence,httpOptions) as Observable<Competence>;
+   }
 }

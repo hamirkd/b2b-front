@@ -19,10 +19,12 @@ import { ParticipantEvenementComponent } from './participant-fiche/participant-e
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ParticipantEvenementEditComponent } from './participant-fiche/participant-evenement-edit/participant-evenement-edit.component';
 import { NgbModalModule, NgbModule, NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BaseModule } from '../base/base.module';
+import { RendezVousParticipantComponent } from './participant-fiche/rendez-vous-participant/rendez-vous-participant.component';
 
 
 @NgModule({
-  declarations: [ParticipantComponent, ParticipantEditComponent, ParticipantFicheComponent, ParticipantEnteteComponent, ParticipantEvenementComponent, ParticipantEvenementEditComponent],
+  declarations: [ParticipantComponent, ParticipantEditComponent, ParticipantFicheComponent, ParticipantEnteteComponent, ParticipantEvenementComponent, ParticipantEvenementEditComponent, RendezVousParticipantComponent],
   imports: [CommonModule,
     FormsModule,
     ParticipantRoutingModule, NgbModule,
@@ -30,7 +32,7 @@ import { NgbModalModule, NgbModule, NgbActiveModal, NgbModal } from '@ng-bootstr
     BsDropdownModule,
     ButtonsModule.forRoot(),CollapseModule.forRoot(),
     HttpClientModule,
-    PaginationModule.forRoot(),SharedModule
+    PaginationModule.forRoot(),SharedModule,BaseModule
   ],
   providers:[TranslateService,NgbActiveModal,NgbModal]
 },

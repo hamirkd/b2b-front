@@ -12,6 +12,7 @@
                   <th>{{'NUMEROTABLE'|translate}}</th>
                   <th>{{'DATEDEBUT'|translate}}</th>
                   <th>{{'DATEFIN'|translate}}</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -24,12 +25,16 @@
                   <td>{{p.dateDebut|date : 'd/M/y  HH:mm:ss'}}</td>
                   <td>{{p.dateFin|date : 'd/M/y  HH:mm:ss'}}</td>
                   <td>
-                    <button class="btn btn-danger btn-sm btn-xs" [disabled]="true">{{'Annuler'|translate}}
+                    <span class="badge badge-danger" *ngIf="p.annuler">{{"ANNULER"|translate}}</span>
+                    <button class="btn btn-danger btn-sm btn-xs"  *ngIf="!p.annuler" (click)="annuler(p)">{{'Annuler'|translate}}
                     </button>
                   </td>
                 </tr>
               </tbody>
             </table>
+            <div class="col-md-12 text-center" *ngIf="isEmpty()">
+              <label>{{"Vous n'avez pas de rendez-vous"|translate}}</label>
+            </div>
           </div>
         </div>
       </div>

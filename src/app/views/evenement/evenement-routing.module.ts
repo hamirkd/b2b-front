@@ -7,17 +7,25 @@ import { EvenementEditComponent } from './evenement-edit/evenement-edit.componen
 const routes: Routes = [
   {
     path: '',
-    component: EvenementComponent,
     data: {
       title: 'Evenement'
-    }
-  },
-  {
-    path: 'add',
-    component: EvenementEditComponent,
-    data: {
-      title: 'Ajouter Evenement'
-    }
+    }, 
+    children: [
+      {
+        path: '',
+        component: EvenementComponent,
+        data: {
+          title: 'Liste evenement'
+        }
+      },
+      {
+        path: ':id',
+        component: EvenementEditComponent,
+        data: {
+          title: 'Ajout Evenement'
+        }
+      }
+    ]
   },
   {
     path: 'edit/:id',

@@ -40,6 +40,26 @@ export const navItems: INavData[] = [
     icon: 'icon-puzzle',
     children: [
       {
+        name: 'Langues',
+        url: '/base/langue',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'Competences',
+        url: '/base/competence',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'Societes',
+        url: '/base/societe',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'Utilisateurs',
+        url: '/base/utilisateur',
+        icon: 'icon-users'
+      },
+      {
         name: 'Cards',
         url: '/base/cards',
         icon: 'icon-puzzle'

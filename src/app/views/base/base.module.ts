@@ -47,20 +47,29 @@ import { NavbarsComponent } from './navbars/navbars.component';
 
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
+import { LangueComponent } from './langue/langue.component';
+import { LangueEditComponent } from './langue-edit/langue-edit.component';
+import { SharedModule } from '../../shared-module';
+import { NgbModule, NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CompetenceComponent } from './competence/competence.component';
+import { CompetenceEditComponent } from './competence-edit/competence-edit.component';
+import { SocieteComponent } from './societe/societe.component';
+import { SocieteEditComponent } from './societe-edit/societe-edit.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     BaseRoutingModule,
-    BsDropdownModule.forRoot(),
+    BsDropdownModule.forRoot(),NgbModule,
     TabsModule,
     CarouselModule.forRoot(),
     CollapseModule.forRoot(),
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),
     ProgressbarModule.forRoot(),
-    TooltipModule.forRoot(),
+    TooltipModule.forRoot(),SharedModule,
   ],
   declarations: [
     CardsComponent,
@@ -74,7 +83,16 @@ import { BaseRoutingModule } from './base-routing.module';
     PopoversComponent,
     ProgressComponent,
     TooltipsComponent,
-    NavbarsComponent
-  ]
+    NavbarsComponent,
+    LangueComponent,
+    LangueEditComponent,
+    CompetenceComponent,
+    CompetenceEditComponent,
+    SocieteComponent,
+    SocieteEditComponent,
+    UtilisateurComponent
+  ],
+  entryComponents:[LangueEditComponent,SocieteEditComponent],
+  providers:[NgbActiveModal,NgbModal]
 })
 export class BaseModule { }

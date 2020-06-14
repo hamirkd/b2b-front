@@ -1,0 +1,37 @@
+<div class="animated fadeIn">
+    <div class="card col-lg-12" style="margin-top:40px;">
+        <div class="card-body">
+            <div class="chart-wrapper">
+                <table class="table table-striped col-lg-12">
+                    <thead>
+                        <tr>
+                            <th>{{'ID'|translate}}</th>
+                            <th>{{'EVENEMENT'|translate}}</th>
+                            <th>{{'PARTICIPANT'|translate}} 1</th>
+                            <th>{{'PARTICIPANT'|translate}} 2</th>
+                            <th>{{'NUMEROTABLE'|translate}}</th>
+                            <th>{{'DATEDEBUT'|translate}}</th>
+                            <th>{{'DATEFIN'|translate}}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let p of rendezVousList;let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{p.evenement.titre}}</td>
+                            <td>{{p.participant1.nom}} {{p.participant1.prenom}}</td>
+                            <td>{{p.participant2.nom}} {{p.participant2.prenom}}</td>
+                            <td>{{p.numeroTable}}</td>
+                            <td>{{p.dateDebut|date : 'd/M/y  HH:mm:ss'}}</td>
+                            <td>{{p.dateFin|date : 'd/M/y  HH:mm:ss'}}</td>
+                            <td>
+                                <span class="badge badge-danger" *ngIf="p.annuler">{{"ANNULER"|translate}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <label *ngIf="!rendezVousList">{{"ce partenaire n'a pas de rendez-vous"|translate}}</label>
+            </div>
+        </div>
+    </div>
+</div>

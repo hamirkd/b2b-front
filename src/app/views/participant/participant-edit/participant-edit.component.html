@@ -85,6 +85,7 @@
                             <select class="form-control col-md-6" [(ngModel)]="participant.societe" name="societe">
                                 <option *ngFor="let societe of societes;let i=index" [value]="i">{{societe.nom}}</option>
                             </select>
+                            <button class="btn btn-default" (click)="addSociete()"><i class="fa fa-arrow-right"></i></button>
                         </div>
 
                         <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
@@ -96,6 +97,20 @@
                                         [id]="competence.id" (click)="addCompetence(competence)">
                                     <label class="form-check-label" [for]="competence.id">
                                         {{competence.nom}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" *ngIf="typeProfil=='PARTICIPANT'">
+                            <label class="col-md-2 col-form-label">{{'Langue'|translate}}</label>
+
+                            <div class="col-md-6 col-form-label row">
+                                <div class="form-check col-md-3" *ngFor="let langue of langues">
+                                    <input class="form-check-input" type="checkbox" [value]="langue.id"
+                                        [id]="langue.id" (click)="addLangue(langue)">
+                                    <label class="form-check-label" [for]="langue.id">
+                                        {{langue.nom}}
                                     </label>
                                 </div>
                             </div>

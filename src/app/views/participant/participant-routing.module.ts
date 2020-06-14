@@ -9,31 +9,32 @@ import { ParticipantEvenementEditComponent } from './participant-fiche/participa
 const routes: Routes = [
   {
     path: '',
-    component: ParticipantComponent,
     data: {
       title: 'Participant'
-    }
-  },
-  {
-    path: 'add',
-    component: ParticipantEditComponent,
-    data: {
-      title: 'Ajouter Participant'
-    }
-  },
-  {
-    path: 'edit/:id',
-    component: ParticipantEditComponent,
-    data: {
-      title: 'Modifier Participant'
-    }
-  },
-  {
-    path: ':id',
-    component: ParticipantFicheComponent,
-    data: {
-      title: 'Fiche Participant'
-    }
+    }, 
+    children: [
+      {
+        path: '',
+        component: ParticipantComponent,
+        data: {
+          title: 'Liste participant'
+        }
+      },
+      {
+        path: 'add',
+        component: ParticipantEditComponent,
+        data: {
+          title: 'Ajouter Participant'
+        }
+      },
+      {
+        path: ':id',
+        component: ParticipantFicheComponent,
+        data: {
+          title: 'Fiche Participant'
+        }
+      }
+    ]
   },
   {
     path: 'EditEvenement',
@@ -45,4 +46,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ParticipantRoutingModule {}
+export class ParticipantRoutingModule { }
