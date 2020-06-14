@@ -8,12 +8,14 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { SharedModule } from '../../shared-module';
+import { RendezVousEditComponent } from './rendez-vous-edit/rendez-vous-edit.component';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 
 @NgModule({
-  declarations: [RendezVousComponent],
+  declarations: [RendezVousComponent, RendezVousEditComponent],
   imports: [
     CommonModule,
     RendezVousRoutingModule,
@@ -23,5 +25,7 @@ import { SharedModule } from '../../shared-module';
     ModalModule.forRoot(),
     PaginationModule.forRoot(),SharedModule
   ]
+  ,
+  providers:[NgbActiveModal,NgbModal]
 })
 export class RendezVousModule { }

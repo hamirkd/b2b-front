@@ -6,6 +6,8 @@ import { EvenementService } from '../../services/evenement.service';
 import { Evenement } from '../../models/evenement.model';
 import { RendezVousService } from '../../services/rendez-vous.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RendezVousEditComponent } from './rendez-vous-edit/rendez-vous-edit.component';
 
 @Component({
   selector: 'app-rendez-vous',
@@ -16,7 +18,7 @@ export class RendezVousComponent implements OnInit {
 
   constructor(
     private rendezVousService:RendezVousService,private toastr:ToastrService,
-    private participantService:ParticipantService,
+    private participantService:ParticipantService,private modalService: NgbModal,
     private evenementService:EvenementService) { }
   data: any = {}
   pp: Participant[] = []
@@ -248,5 +250,23 @@ export class RendezVousComponent implements OnInit {
     },err=>console.log(err));
   }
 
+  modifier(rendezVous:RendezVous){
+
+    const modalRef = this.modalService.open(RendezVousEditComponent);
+    modalRef.componentInstance.parent=this;
+    modalRef.componentInstance.participants = this.PARTICIPANT;
+    modalRef.componentInstance.rendezVous=rendezVous;
+    modalRef.componentInstance.numeroTable=rendezVous.numeroTable;
+    modalRef.componentInstance.selectedParticipantId1 = rendezVous.participant1.id;
+    modalRef.componentInstance.selectedParticipantId2 = rendezVous.participant2.id;
+  }
+  supprimer(rendezVous:RendezVous){
+    this.ppp.splice(this.ppp.findIndex(p=>p.numeroTable==rendezVous.numeroTable&&p.participant1.id==rendezVous.participant1.id
+      &&p.participant2.id==rendezVous.participant2.id),1);
+      let page = this.currentPage * this.itemsPerPage;
+      this.totalItems = this.ppp.length
+      this.rendezVousList = this.ppp;
+      this.rendezVousList.slice(page, page + this.itemsPerPage);
+  }
 
 }

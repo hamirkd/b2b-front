@@ -126,10 +126,11 @@
                 <th>{{'NUMEROTABLE'|translate}}</th>
                 <th>{{'DATEDEBUT'|translate}}</th>
                 <th>{{'DATEFIN'|translate}}</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let p of rendezVousList;let i=index">
+              <tr *ngFor="let p of rendezVousList;let i=index" (click)="modifier(p)" style="cursor: pointer;">
                 <td>{{i+1+((currentPage-1)*itemsPerPage)}}</td>
                 <td>{{p.participant1.nom}} {{p.participant1.prenom}}</td>
                 <td>{{p.participant2.nom}} {{p.participant2.prenom}}</td>
@@ -137,9 +138,7 @@
                 <td>{{p.dateDebut|date : 'd/M/y  HH:mm:ss'}}</td>
                 <td>{{p.dateFin|date : 'd/M/y  HH:mm:ss'}}</td>
                 <td>
-                  <button class="btn btn-danger">{{'EDIT'|translate}}
-                    &nbsp; <i class="fa fa-edit"></i>
-                  </button>
+                  <span class="badge badge-danger" *ngIf="p.annuler">{{"ANNULER"|translate}}</span>
                 </td>
               </tr>
             </tbody>

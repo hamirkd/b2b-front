@@ -1,0 +1,35 @@
+<div class="card border-primary card-accent-warning">
+    <div class="card-header">
+        {{"Modifier le rendez vous"|translate}}
+        <div class="card-header-actions" style="height: 21px;">
+            <label class="switch switch-sm switch-label switch-info">
+                <button class="btn btn-sm" (click)="activeModal.dismiss('Cross click')"><i
+                        class="fa fa-close"></i></button>
+            </label>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-md-4 col-form-label">{{'PARTICIPANT'|translate}} 1</label>
+            <select class="form-control col-md-6" [(ngModel)]="selectedParticipantId1" name="selectedParticipantId1" required>
+                <option *ngFor="let participant of participants" [value]="participant.id">{{participant.nom}} {{participant.prenom}}</option>
+            </select>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-4 col-form-label">{{'PARTICIPANT'|translate}} 2</label>
+            <select class="form-control col-md-6" [(ngModel)]="selectedParticipantId2" name="selectedParticipantId2" required>
+                <option *ngFor="let participant of participants" [value]="participant.id">{{participant.nom}} {{participant.prenom}}</option>
+            </select>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-4 col-form-label">{{'Numéro de table'|translate}}</label>
+            <input class="form-control col-md-7 input-sm" [(ngModel)]="numeroTable" name="numeroTable">
+        </div>
+    </div>
+    <div class="card-footer text-right">
+        <button class="btn btn-danger btn-sm" (click)="annuler()" *ngIf="!rendezVous.annuler">{{'Annuler'|translate}}</button>
+        <button class="btn btn-danger btn-sm" (click)="supprimer()">{{'Supprimer'|translate}}</button>
+        <button class="btn btn-danger btn-sm" (click)="updated()">{{'EDIT'|translate}}</button>
+        <button class="btn btn-default btn-sm" (click)="activeModal.close('Close click')">{{'CLOSE'|translate}}</button>
+    </div>
+</div>
