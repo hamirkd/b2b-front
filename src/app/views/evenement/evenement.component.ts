@@ -6,6 +6,7 @@ import { Evenement } from '../../models/evenement.model';
 import { EvenementService } from '../../services/evenement.service';
 import { PaysService } from '../../services/pays.service';
 import { Participant } from '../../models/participant.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class EvenementComponent  implements OnInit {
   participant:Participant=new Participant();
   constructor(public session: SessionService, private route: Router,
     private evenementService:EvenementService,private e:PaysService,
-    private participantService:ParticipantService) {
+    private participantService:ParticipantService,private toastr:ToastrService) {
     
   }
   ngOnInit(){
@@ -38,15 +39,19 @@ export class EvenementComponent  implements OnInit {
     const evenementDto={id:evenement.id,login:this.session.user.login}
     this.evenementService.addOrDelete(evenementDto).subscribe(e=>{
       evenement.participants=e.participants;
+      this.toastr.success("Vos informations ont été mises à jour");
     },err=>{
       console.log(err)
+      this.toastr.error("Echec de mise à jour");
     })
   }
   consulterRdv(evenement){
-    
+    this.route.navigate(['/evenement/mon-choix',evenement.id]);
   }
   deleteById(id){
-    this.evenementService.deleteById(id).subscribe(()=>{this.ngOnInit()},err=>console.log(err))
+    this.evenementService.deleteById(id).subscribe(()=>{
+      this.toastr.success("L'évènement a été supprimé")
+      this.ngOnInit()},err=>console.log(err))
   }
 
   isParticipe(evenement:Evenement){

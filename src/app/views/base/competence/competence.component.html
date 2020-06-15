@@ -17,11 +17,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let competence of competences">
+                <tr *ngFor="let competence of competences" (click)="edit(competence)" style="cursor: pointer;">
                   <td>{{competence.nom}} 
-                    <div class="btn-group float-right">
-                      <button class="btn btn-sm" (click)="edit(competence)">{{'EDIT'|translate}}</button>
-                    </div>
                   </td>
                 </tr>
               </tbody>

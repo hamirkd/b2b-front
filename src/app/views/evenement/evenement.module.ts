@@ -10,11 +10,12 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared-module';
 import { EvenementEditComponent } from './evenement-edit/evenement-edit.component';
+import { MonChoixComponent } from './mon-choix/mon-choix.component';
 
 
 
 @NgModule({
-  declarations: [EvenementComponent, EvenementEditComponent],
+  declarations: [EvenementComponent, EvenementEditComponent, MonChoixComponent],
   imports: [CommonModule,
     FormsModule,
     EvenementRoutingModule,

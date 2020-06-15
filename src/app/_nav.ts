@@ -35,7 +35,7 @@ export const navItems: INavData[] = [
     icon: 'icon-layers'
   },
   {
-    name: 'Base',
+    name: 'Configuration',
     url: '/base',
     icon: 'icon-puzzle',
     children: [

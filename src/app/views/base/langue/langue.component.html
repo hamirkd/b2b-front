@@ -17,11 +17,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let langue of langues">
+                <tr *ngFor="let langue of langues" (click)="edit(langue)" style="cursor: pointer;">
                   <td>{{langue.nom}} 
-                    <div class="btn-group float-right">
-                      <button class="btn btn-sm" (click)="edit(langue)">{{'EDIT'|translate}}</button>
-                    </div>
                   </td>
                 </tr>
               </tbody>

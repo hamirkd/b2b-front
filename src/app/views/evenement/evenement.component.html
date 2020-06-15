@@ -35,7 +35,7 @@
                 <div class="card-footer" *ngIf="!session.isAdmin()">
                     <button class="btn btn-primary btn-sm" (click)="participer(evenement)" *ngIf="!isParticipe(evenement)">{{'PARTICIPER'|translate}}</button>
                     <button class="btn btn-default btn-sm" (click)="participer(evenement)" *ngIf="isParticipe(evenement)">{{'DESABONNER'|translate}}</button>
-                    <button class="btn btn-primary btn-sm" (click)="consulterRdv(evenement)" *ngIf="isParticipe(evenement)">{{'CONSULTERRDV'|translate}}</button>
+                    <button class="btn btn-primary btn-sm" (click)="consulterRdv(evenement)" *ngIf="isParticipe(evenement)">{{'MONCHOIX'|translate}}</button>
                 </div>
             </div>
         </div>

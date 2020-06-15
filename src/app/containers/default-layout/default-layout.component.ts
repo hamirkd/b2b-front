@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SessionService } from '../../services/session.service';
 import { navItemsParticipant } from '../../_nav_participant';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,9 @@ export class DefaultLayoutComponent implements OnInit {
   /** Les langues {en,fr} */
   lng: string;
   data = false;
-  constructor(private route: Router, private translate: TranslateService, private session: SessionService) {
+  constructor(private route: Router, private translate: TranslateService,
+     private session: SessionService,
+     private toastr:ToastrService) {
 
     this.navItems = navItems;
     if (!this.session.isLogin()) {
@@ -55,6 +58,7 @@ export class DefaultLayoutComponent implements OnInit {
 
   deconnecter() {
     console.log("salut")
+    this.toastr.success("Au revoir");
     localStorage.removeItem("userData");
     this.route.navigateByUrl("");
   }

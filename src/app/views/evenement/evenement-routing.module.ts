@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { EvenementComponent } from './evenement.component';
 import { EvenementEditComponent } from './evenement-edit/evenement-edit.component';
+import { MonChoixComponent } from './mon-choix/mon-choix.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,13 @@ const routes: Routes = [
         component: EvenementEditComponent,
         data: {
           title: 'Ajout Evenement'
+        }
+      },
+      {
+        path: 'mon-choix/:id',
+        component: MonChoixComponent,
+        data: {
+          title: 'Critère de rendez vous'
         }
       }
     ]

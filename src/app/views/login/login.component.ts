@@ -16,8 +16,8 @@ export class LoginComponent {
   constructor(private route:Router,private loginService:LoginService,private toastr:ToastrService,private sessionService:SessionService){
     if(sessionService.isLogin()){
       this.route.navigateByUrl("dashboard")
+      this.toastr.success("Bienvenue")
     }
-    this.toastr.success("Ici");
   }
 
   connecter(){
@@ -27,7 +27,11 @@ export class LoginComponent {
     this.loginService.findByLoginAndPassword(this.username,this.password).subscribe(data=>{
       localStorage.setItem("userData",JSON.stringify(data));
       console.log(data+"Donnee")
+      if(data)
       this.toastr.success("Bienvenue");
+      else{
+        this.toastr.error("Veuillez verifier vos identifiants")
+      }
       this.route.navigateByUrl("");
     },err=>{
       console.log(err);

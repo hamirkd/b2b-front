@@ -17,11 +17,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let societe of societes">
+                <tr *ngFor="let societe of societes" (click)="edit(societe)" style="cursor: pointer;">
                   <td>{{societe.nom}} 
-                    <div class="btn-group float-right">
-                      <button class="btn btn-sm" (click)="edit(societe)">{{'EDIT'|translate}}</button>
-                    </div>
                   </td>
                 </tr>
               </tbody>

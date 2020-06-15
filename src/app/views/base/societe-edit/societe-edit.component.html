@@ -12,6 +12,14 @@
         <label class="col-md-4 col-form-label">{{'NOM'|translate}}</label>
         <input class="form-control col-md-7 input-sm" [(ngModel)]="societe.nom" name="societe">
       </div>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">{{'Capital'|translate}}</label>
+        <input class="form-control col-md-7 input-sm" [(ngModel)]="societe.capital" name="capital">
+      </div>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">{{"Chiffre d'affaire"|translate}}</label>
+        <input class="form-control col-md-7 input-sm" [(ngModel)]="societe.chiffreAffaire" name="chiffreAffaire;">
+      </div>
     </div>
     <div class="card-footer text-right">
         <button class="btn btn-danger btn-sm" (click)="addSociete()">{{(societe.id?'EDIT':'ADD')|translate}}</button>
