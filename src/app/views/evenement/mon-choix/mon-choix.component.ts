@@ -13,6 +13,9 @@ export class MonChoixComponent implements OnInit {
 
   participants: Participant[]=[];
   evenementId:string;
+  selectedParticipantId2:string;
+  selectedParticipantId1:string;
+  selectedParticipantId3:string;
   constructor(private route: ActivatedRoute, private evenementService: EvenementService) {
     if (this.route.snapshot.paramMap.get("id")) {
       this.evenementId = this.route.snapshot.paramMap.get("id");
@@ -24,5 +27,8 @@ export class MonChoixComponent implements OnInit {
       this.participants = p.participants;
       console.log(p)
     },err=>console.log(err))
+  }
+  updated(){
+
   }
 }
